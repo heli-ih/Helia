@@ -2,26 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.blink {
+  animation: blink 1.5s infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.clickEffect {
+  animation: colorChange 0.5s forwards;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+@keyframes colorChange {
+  0% {
+    background-color: initial;
+  }
+  100% {
+    background-color: #838cf136;
+  }
+}
+
+.project-card {
+  @apply flex flex-col gap-4 cursor-pointer bg-gray-800/40 text-gray-400 rounded-xl p-8 hover:bg-gray-700/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-indigo-400/65;
 }
