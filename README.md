@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Helia Website
+
+Helia Website is my resume website showcasing my projects and information.
+
+## Technologies:
+Built with Next.js, React, TailwindCSS, and Material Tailwind.
+
+## Usage:
+To explore my Website, visit the live website or clone the repository and run it locally following the instructions in the README.md file.
+
+
 
 ## Getting Started
 
