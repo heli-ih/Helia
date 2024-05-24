@@ -31,6 +31,6 @@
   }
 }
 
-.project-card {
-  @apply flex flex-col gap-4 cursor-pointer bg-gray-800/40 text-gray-400 rounded-xl p-8 hover:bg-gray-700/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-indigo-400/65;
+.card {
+  @apply flex flex-col gap-4 cursor-pointer bg-gray-800/40 text-gray-400 rounded-xl hover:bg-gray-700/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-indigo-400/65;
 }
