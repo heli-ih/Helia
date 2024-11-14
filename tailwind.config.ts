@@ -15,6 +15,7 @@ const config: Config = withMT({
     extend: {
       fontFamily: {
         NTR: ["NTR", "sans-serif"],
+        garamond: ["Garamond", "EB Garamond", "serif"],
       },
     },
   },

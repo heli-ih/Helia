@@ -77,7 +77,7 @@ export function ProjectsCarousel() {
         <div className="absolute inset-0 grid h-full w-full items-end ">
           <div className="flex flex-col justify-center items-center mb-10 sm:mb-10 md:mb-10 text-gray-200 px-14 md:px-20">
             <span className="text-[12px] sm:text-lg md:text-2xl font-bold">
-              Food Pickup
+              Fresh Food Pickup
             </span>
             <span className="text-[10px] sm:text-xs md:text-lg font-semibold text-justify">
               Developing an algorithm in dynamic priority queue that runs behind
@@ -117,9 +117,9 @@ export function ProjectsCarousel() {
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Household-Food-Waste-Management.png?alt=media&token=5a759124-3456-46b7-a960-5b05c19a0c97"
+            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/FoodGaurdian.png?alt=media&token=9d49e742-f8eb-4b42-889c-061b0c6e9328"
             alt="Food Guardian"
-            className="h-full w-full object-cover opacity-45"
+            className="h-full w-full object-cover opacity-30"
           />
         </div>
         <div className="absolute inset-0 grid h-full w-full items-end ">
@@ -135,10 +135,11 @@ export function ProjectsCarousel() {
               earning badges, with clear support and feedback options
             </span>
             <span className="text-indigo-300 text-[10px] sm:text-xs md:text-lg font-bold shadow-2xl">
-              React Native, Typescript, Firebase, Gemini API, Figma
+              React Native, Typescript, Nativewind, Firestore, Gemini API,
+              Google Maps API, Figma
             </span>
             <div>
-              <a href="https://github.com/heli-ih" target="_blank">
+              <a href="https://github.com/heli-ih/FoodGaurdian" target="_blank">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
@@ -164,7 +165,7 @@ export function ProjectsCarousel() {
           <img
             src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Event-Management.png?alt=media&token=3a86f5de-1455-4e84-a2d0-c40bf9fcd224"
             alt="CUD Event Management"
-            className="h-full w-full object-cover opacity-35"
+            className="h-full w-full object-cover opacity-30"
           />
         </div>
         <div className="absolute inset-0 grid h-full w-full items-end ">
@@ -174,8 +175,9 @@ export function ProjectsCarousel() {
             </span>
             <span className="text-[10px] sm:text-xs md:text-lg font-semibold text-justify">
               This platform serves as a centralized hub for organizing,
-              browsing, and registering for events within the university, hosted
-              by various clubs, societies and workshop organizers
+              browsing, and registering for events within an education
+              environment, hosted by various clubs, societies and workshop
+              organizers
             </span>
             <span className="text-indigo-300 text-[10px] sm:text-xs md:text-lg font-bold shadow-2xl">
               Svelte, Typescript, SQLite, Prisma

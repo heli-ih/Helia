@@ -29,7 +29,6 @@ export function Certifications() {
         </ul>
       </div>
       <div className=" sm:w-[90%]">
-        {/* a tag for each card w the link to the pic, update the pic */}
         {/* 2024 */}
         <div
           className={`${
@@ -40,10 +39,44 @@ export function Certifications() {
         >
           <div className="card">
             <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FUOWD_Certificate_2024.png?alt=media&token=358bce80-24e9-4f31-beed-d4bedd573ffa"
+              alt="UOWD Innovation Fair - Research"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  UOWD Innovation Fair - Research
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">June 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FIEEE_Best_Software_Engineering_Project.pdf?alt=media&token=295ee156-c6b1-4355-aac5-570d388d648a"
+              alt="IEEE Best Software Engineering Project"
+              className="w-full rounded-t-lg"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  IEEE Best Software Engineering Project
+                </span>
+              </div>
+              <span className="px-5">
+                A winner of the "The Best Software Engineering Project" for the
+                "FoodGaurdian" project
+              </span>
+              <span className="mt-[10%] px-5 pb-5">June 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FZURC2024.png?alt=media&token=229e3148-60d6-4a61-9a8c-f2bd3dacc8b3"
               alt="Zayed University 15th Annual Undergraduate Research Conference
               on Applied Computing"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-80"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">
@@ -112,7 +145,7 @@ export function Certifications() {
             <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FRIT%20Robotics%20Competition.png?alt=media&token=11f22865-c84a-4d3c-8c3f-4295b41fc4f5"
               alt="Emirates Robotics Competition"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-80"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">
@@ -161,7 +194,7 @@ export function Certifications() {
             <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FMeta%20-%20Programming%20with%20JavaScript.png?alt=media&token=a877d3d3-c844-4aed-96b9-6254d851c010"
               alt="Meta Programming with JavaScript"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-80"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">
@@ -176,7 +209,7 @@ export function Certifications() {
             <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FIEEE_Innovation_Competition.png?alt=media&token=e2e7d358-6609-4d1d-82b5-599035b6044d"
               alt="SKYLINE University College Innovation Competition"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-85"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">
@@ -191,7 +224,7 @@ export function Certifications() {
             <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FSQL.png?alt=media&token=4c24720a-cf43-491a-b14b-da70cc3c7d11"
               alt="IBM - SQL: A Practical Introduction for Querying Databases"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-80"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">
@@ -230,7 +263,7 @@ export function Certifications() {
             <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2Fnybl.png?alt=media&token=65524097-4f2d-4ce8-b252-403374d3b472"
               alt="Volunteering with nybl at Gitex Global Dubai"
-              className="w-full rounded-t-lg"
+              className="w-full rounded-t-lg opacity-80"
             />
             <div className="flex flex-col justify-between h-full">
               <div className="flex flex-row items-center w-full mb-2 px-5">

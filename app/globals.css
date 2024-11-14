@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
+
 .blink {
   animation: blink 1.5s infinite;
 }
@@ -32,5 +34,5 @@
 }
 
 .card {
-  @apply flex flex-col gap-4 cursor-pointer bg-gray-800/40 text-gray-400 rounded-xl hover:bg-gray-700/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-indigo-400/65;
+  @apply flex flex-col gap-4  bg-gray-800/40 text-gray-400 rounded-xl hover:bg-gray-700/30 hover:-translate-y-2 hover:shadow-lg hover:shadow-indigo-400/65;
 }
