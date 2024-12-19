@@ -39,6 +39,96 @@ export function Certifications() {
         >
           <div className="card">
             <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FEthics%20in%20the%20Age%20of%20Generative%20AI.pdf?alt=media&token=19c68800-20ec-4817-96d1-0933f94551d8"
+              alt="Ethics in the Age of Generative AI"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  Ethics in the Age of Generative AI
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FGenerative%20AI%20-The%20Evolution%20%20of%20Thoughtful%20Online.pdf?alt=media&token=75ea548f-9ceb-428e-9046-6daa1238a7a7"
+              alt="Generative AI - The Evolution of Thoughtful Online"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  Generative AI - The Evolution of Thoughtful Online
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FGenerative%20AI%20for%20Business%20Leaders.pdf?alt=media&token=a79a1dda-a538-4473-a35e-b7b154069314"
+              alt="Generative AI for Business Leaders"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  Generative AI for Business Leaders
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FGoogle_Cloud_Introduction_to_AI.pdf?alt=media&token=7a4a5ce0-2b1f-4759-8049-da620b3d9bf4"
+              alt="Google Cloud - Introduction to AI"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  Google Cloud - Introduction to AI
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FLarge%20Language%20Models.pdf?alt=media&token=63787fd7-6d3e-4db4-a49e-be6c1fe3168d"
+              alt="Google Cloud - Large Language Models"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  Google Cloud - Large Language Models
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FWhat%20Is%20Generative%20AI.pdf?alt=media&token=c78e10af-7363-4e76-b1c7-1e2a6230902a"
+              alt="What Is Generative AI"
+              className="w-full rounded-t-lg opacity-80"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  What Is Generative AI?
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">December 2024</span>
+            </div>
+          </div>
+          <div className="card">
+            <img
               src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2FUOWD_Certificate_2024.png?alt=media&token=358bce80-24e9-4f31-beed-d4bedd573ffa"
               alt="UOWD Innovation Fair - Research"
               className="w-full rounded-t-lg opacity-80"

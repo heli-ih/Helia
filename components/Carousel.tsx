@@ -23,6 +23,50 @@ export function ProjectsCarousel() {
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
+            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/SkillSage.png?alt=media&token=b649fd63-c4c5-40a8-b68d-c2defe8fc91a"
+            alt="SkillSage"
+            className="h-full w-full object-cover opacity-35"
+          />
+        </div>
+        <div className="absolute inset-0 grid h-full w-full items-end ">
+          <div className="flex flex-col justify-center items-center mb-10 sm:mb-10 md:mb-10 text-gray-200 px-14 md:px-20">
+            <span className="text-[12px] sm:text-lg md:text-2xl font-bold ">
+              SkillSage
+            </span>
+            <span className="text-[10px] sm:text-xs md:text-lg font-semibold text-justify">
+              An enterprise-grade test management system that offers comprehensive assessment capabilities. The platform features advanced security measures including TensorFlow.js monitoring, dual authentication, and automated test processing, while providing sophisticated analytics for performance tracking and reporting
+            </span>
+            <span className="text-indigo-300 text-[10px] sm:text-xs md:text-lg font-bold shadow-2xl">
+            PHP, Laravel, PostgreSQL, Livewire, Tailwind CSS, Alpine.js, TensorFlow.js, Vite, Laravel Excel, PHPMailer, GeoIP
+            </span>
+            <div>
+              <a
+                href="https://github.com/heli-ih"
+                target="_blank"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  x="0px"
+                  y="0px"
+                  width="19"
+                  height="19"
+                  viewBox="0,0,255.99263,255.99263"
+                  className="fill-gray-200"
+                >
+                  <g transform="scale(10.66667,10.66667)">
+                    <path d="M10.9,2.1c-4.6,0.5 -8.3,4.2 -8.8,8.7c-0.5,4.7 2.2,8.9 6.3,10.5c0.3,0.1 0.6,-0.1 0.6,-0.5v-1.6c0,0 -0.4,0.1 -0.9,0.1c-1.4,0 -2,-1.2 -2.1,-1.9c-0.1,-0.4 -0.3,-0.7 -0.6,-1c-0.3,-0.1 -0.4,-0.1 -0.4,-0.2c0,-0.2 0.3,-0.2 0.4,-0.2c0.6,0 1.1,0.7 1.3,1c0.5,0.8 1.1,1 1.4,1c0.4,0 0.7,-0.1 0.9,-0.2c0.1,-0.7 0.4,-1.4 1,-1.8c-2.3,-0.5 -4,-1.8 -4,-4c0,-1.1 0.5,-2.2 1.2,-3c-0.1,-0.2 -0.2,-0.7 -0.2,-1.4c0,-0.4 0,-0.9 0.2,-1.3c0,-0.2 0.2,-0.3 0.3,-0.3h0.1c0.5,0.1 1.5,0.4 2.4,1.3c0.6,-0.2 1.3,-0.3 2,-0.3c0.7,0 1.4,0.1 2,0.3c0.9,-0.9 2,-1.2 2.5,-1.3h0.1c0.2,0 0.3,0.1 0.4,0.3c0,0.4 0,0.9 0,1.3c0,0.8 -0.1,1.2 -0.2,1.4c0.7,0.8 1.2,1.8 1.2,3c0,2.2 -1.7,3.5 -4,4c0.6,0.5 1,1.4 1,2.3v2.6c0,0.3 0.3,0.6 0.7,0.5c3.7,-1.5 6.3,-5.1 6.3,-9.3c0,-6 -5.1,-10.7 -11.1,-10z"></path>
+                  </g>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* img 2 */}
+      <div className="relative h-full w-full overflow-hidden">
+        <div className="bg-gray-900 ">
+          <img
             src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Nav.png?alt=media&token=f0e59167-6bfd-45b1-a61b-4245f8f8f4dd"
             alt="CUD Indoor map Navigator"
             className="h-full w-full object-cover opacity-35"
@@ -65,7 +109,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 2 */}
+      {/* img 3 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
@@ -113,7 +157,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 3 */}
+      {/* img 4 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
@@ -159,7 +203,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 4 */}
+      {/* img 5 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
