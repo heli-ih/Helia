@@ -34,16 +34,19 @@ export function ProjectsCarousel() {
               SkillSage
             </span>
             <span className="text-[10px] sm:text-xs md:text-lg font-semibold text-justify">
-              An enterprise-grade test management system that offers comprehensive assessment capabilities. The platform features advanced security measures including TensorFlow.js monitoring, dual authentication, and automated test processing, while providing sophisticated analytics for performance tracking and reporting
+              An enterprise-grade test management system that offers
+              comprehensive assessment capabilities. The platform features
+              advanced security measures including TensorFlow.js monitoring,
+              dual authentication, and automated test processing, while
+              providing sophisticated analytics for performance tracking and
+              reporting
             </span>
             <span className="text-indigo-300 text-[10px] sm:text-xs md:text-lg font-bold shadow-2xl">
-            PHP, Laravel, PostgreSQL, Livewire, Tailwind CSS, Alpine.js, TensorFlow.js, Vite, Laravel Excel, PHPMailer, GeoIP
+              PHP, Laravel, PostgreSQL, Livewire, Tailwind CSS, Alpine.js,
+              TensorFlow.js, Vite, Laravel Excel, PHPMailer, GeoIP
             </span>
             <div>
-              <a
-                href="https://github.com/heli-ih"
-                target="_blank"
-              >
+              <a href="https://github.com/heli-ih" target="_blank">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   x="0px"
@@ -62,7 +65,7 @@ export function ProjectsCarousel() {
           </div>
         </div>
       </div>
-      
+
       {/* img 2 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
@@ -207,7 +210,7 @@ export function ProjectsCarousel() {
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
-            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Event-Management.png?alt=media&token=3a86f5de-1455-4e84-a2d0-c40bf9fcd224"
+            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Event-Management.png?alt=media&token=30d60421-22b3-416c-ba96-540d0dca2153"
             alt="CUD Event Management"
             className="h-full w-full object-cover opacity-30"
           />

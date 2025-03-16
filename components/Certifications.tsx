@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export function Certifications() {
-  const years = [2024, 2023, 2022, 2021];
+  const years = [2025, 2024, 2023, 2022, 2021];
 
   const [clickedIndex, setClickedIndex] = useState<number>(0);
 
@@ -29,10 +29,34 @@ export function Certifications() {
         </ul>
       </div>
       <div className=" sm:w-[90%]">
-        {/* 2024 */}
+        {/* 2025 */}
         <div
           className={`${
             clickedIndex !== 0
+              ? "hidden"
+              : "w-full h-full grid lg:grid-cols-2 xl:grid-cols-3 gap-4 pl-5 sm:pl-10 sm:pr-6  py-5  rounded-lg border-l-2 border-indigo-400 "
+          }`}
+        >
+          <div className="card">
+            <img
+              src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2025%2F1%20MILLION%20PROMPTERS.png?alt=media&token=fafe88bf-c3ad-433d-9d2f-796aa16a8dda"
+              alt="1 MILLION PROMPTERS"
+              className="w-full rounded-t-lg"
+            />
+            <div className="flex flex-col justify-between h-full">
+              <div className="flex flex-row items-center w-full mb-2 px-5">
+                <span className="text-xl md:text-2xl text-gray-200">
+                  1 MILLION PROMPTERS
+                </span>
+              </div>
+              <span className="mt-[10%] px-5 pb-5">February 2025</span>
+            </div>
+          </div>
+        </div>
+        {/* 2024 */}
+        <div
+          className={`${
+            clickedIndex !== 1
               ? "hidden"
               : "w-full h-full grid lg:grid-cols-2 xl:grid-cols-3 gap-4 pl-5 sm:pl-10 sm:pr-6  py-5  rounded-lg border-l-2 border-indigo-400 "
           }`}
@@ -226,7 +250,7 @@ export function Certifications() {
         {/* 2023 */}
         <div
           className={`${
-            clickedIndex !== 1
+            clickedIndex !== 2
               ? "hidden"
               : "w-full h-full grid lg:grid-cols-2 xl:grid-cols-3 gap-4 pl-5 sm:pl-10 sm:pr-6  py-5  rounded-lg border-l-2 border-indigo-400 "
           }`}
@@ -344,7 +368,7 @@ export function Certifications() {
         {/* 2022 */}
         <div
           className={`${
-            clickedIndex !== 2
+            clickedIndex !== 3
               ? "hidden"
               : "w-full h-full grid lg:grid-cols-2 xl:grid-cols-3 gap-4 pl-5 sm:pl-10 sm:pr-6  py-5  rounded-lg border-l-2 border-indigo-400 "
           }`}
@@ -383,7 +407,7 @@ export function Certifications() {
         {/* 2021 */}
         <div
           className={`${
-            clickedIndex !== 3
+            clickedIndex !== 4
               ? "hidden"
               : "w-full h-full grid lg:grid-cols-2 xl:grid-cols-3 gap-4 pl-5 sm:pl-10 sm:pr-6  py-5  rounded-lg border-l-2 border-indigo-400 "
           }`}

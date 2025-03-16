@@ -33,7 +33,7 @@ export default function Home() {
     "Confluence",
   ];
 
-  const experiences = ["Milele", "Peekabox", "AccuMed"];
+  const experiences = ["Milele", "Peekabox", "AccentEMC", "AccuMed"];
 
   const [clickedIndex, setClickedIndex] = useState<number>(0);
 
@@ -123,7 +123,10 @@ export default function Home() {
         <div className="mt-12 text-gray-400 xl:flex xl:flex-row xl:items-center lg:items-start flex flex-col-reverse">
           <div className="xl:mr-6 text-justify text-m sm:text-xl">
             <p className="mb-5">
-            Software Developer and UI/UX Designer with a Bachelor of Computer Science. My expertise spans enterprise solutions and user-centered design, continuously delivering innovative products that drive business impact.
+              Software Developer and UI/UX Designer with a Bachelor of Computer
+              Science. My expertise spans enterprise solutions and user-centered
+              design, continuously delivering innovative products that drive
+              business impact.
             </p>
             <p className="mb-5">
               Here are technologies I have been working with:
@@ -175,13 +178,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -210,13 +213,13 @@ export default function Home() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 22 22"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="#EEEEEE"
                     className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                     />
                   </svg>
@@ -243,13 +246,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -297,13 +300,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -349,13 +352,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -384,13 +387,13 @@ export default function Home() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 22 22"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="#EEEEEE"
                     className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                     />
                   </svg>
@@ -414,13 +417,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -452,13 +455,13 @@ export default function Home() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 22 22"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="#EEEEEE"
                     className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                     />
                   </svg>
@@ -485,13 +488,13 @@ export default function Home() {
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  strokeWidth="1.5"
                   stroke="#5F6BBA"
                   className="w-8 h-8"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 0 0-1.883 2.542l.857 6a2.25 2.25 0 0 0 2.227 1.932H19.05a2.25 2.25 0 0 0 2.227-1.932l.857-6a2.25 2.25 0 0 0-1.883-2.542m-16.5 0V6A2.25 2.25 0 0 1 6 3.75h3.879a1.5 1.5 0 0 1 1.06.44l2.122 2.12a1.5 1.5 0 0 0 1.06.44H18A2.25 2.25 0 0 1 20.25 9v.776"
                   />
                 </svg>
@@ -520,13 +523,13 @@ export default function Home() {
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 22 22"
-                    stroke-width="1.5"
+                    strokeWidth="1.5"
                     stroke="#EEEEEE"
                     className="w-5 h-5"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                       d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
                     />
                   </svg>
@@ -551,7 +554,7 @@ export default function Home() {
           <span className="text-gray-200">Experiences</span>
         </div>
 
-        <div className="flex flex-col sm:flex-row  h-96 mt-12 text-gray-400">
+        <div className="flex flex-col sm:flex-row mt-12 text-gray-400">
           <div className=" sm:w-[30%] py-3">
             <ul className="h-full">
               {experiences.map((item, index) => (
@@ -569,7 +572,7 @@ export default function Home() {
               ))}
             </ul>
           </div>
-          <div className="h-full  sm:w-[70%] ">
+          <div className="overflow-y-auto sm:w-[70%] ">
             {/* Milele */}
             <div
               className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
@@ -577,14 +580,57 @@ export default function Home() {
               }`}
             >
               <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                <div className="flex flex-col">
+                  <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                    Technical Business Analyst @&nbsp;
+                    <a
+                      href="https://www.milele.com/"
+                      target="_blank"
+                      className="text-indigo-400"
+                    >
+                      Milele
+                    </a>
+                  </span>
+                  <span className="text-sm xl:text-lg md:text-m">
+                    Feb 2024 - Present
+                  </span>
+                </div>
+                <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Supported in the development and presentation of the SAP
+                      S/4HANA Consolidation Strategy, focusing on migration,
+                      integration, and process optimization.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Documented business processes across platforms like
+                      NetSuite and SharePoint, aligning them with SAP’s
+                      capabilities to reduce customization, and maximize
+                      automation.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Assisted in data migration planning and cleanup to ensure
+                      data integrity during the transition.- Assisted in data
+                      migration planning and cleanup to ensure data integrity
+                      during the transition.
+                    </p>
+                  </li>
+                </ul>
+                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 pt-10">
                   Software Developer @&nbsp;
                   <a
                     href="https://www.milele.com/"
                     target="_blank"
                     className="text-indigo-400"
                   >
-                    Milele 
+                    Milele
                   </a>
                 </span>
                 <span className="text-sm xl:text-lg md:text-m">
@@ -595,31 +641,37 @@ export default function Home() {
                 <li className="flex flex-row mt-5 mb-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Engineered a secure testing platform with anti-cheating mechanisms leveraging Laravel 11.
+                    Engineered a secure testing platform with anti-cheating
+                    mechanisms leveraging Laravel 11.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Developed bulk question import system and invitation email infrastructure, reducing creation time by 60%.
+                    Developed bulk question import system and invitation email
+                    infrastructure, reducing creation time by 60%.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Integrated TensorFlow.js for advanced anti-cheating detection, including tab switching and window blur monitoring, achieving 95% fraud prevention rate.
+                    Integrated TensorFlow.js for advanced anti-cheating
+                    detection, including tab switching and window blur
+                    monitoring, achieving 95% fraud prevention rate.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Implemented comprehensive time-based analytics dashboard, generating detailed performance metrics.
+                    Implemented comprehensive time-based analytics dashboard,
+                    generating detailed performance metrics.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Developed a secure file storage system and session management, maintaining 80% data integrity.
+                    Developed a secure file storage system and session
+                    management, maintaining 80% data integrity.
                   </p>
                 </li>
               </ul>
@@ -642,27 +694,80 @@ export default function Home() {
                   </a>
                 </span>
                 <span className="text-sm xl:text-lg md:text-m">
-                  Oct 2024 - Present
+                  May 2024 - Oct 2024
                 </span>
               </div>
               <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
                 <li className="flex flex-row mt-5 mb-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Spearheaded end-to-end user research and wireframing for SaaS products, improving user engagement metrics by implementing data-driven design solutions.
+                    Directed end-to-end user research and wireframing for SaaS
+                    products, improving user engagement metrics by implementing
+                    data-driven design solutions.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Created high-fidelity prototypes and design systems using Figma, conducting user testing sessions to optimize interface accessibility and user flows.                  </p>
+                    Created high-fidelity prototypes and design systems using
+                    Figma, conducting user testing sessions to optimize
+                    interface accessibility and user flows.{" "}
+                  </p>
+                </li>
+              </ul>
+            </div>
+            {/* AccentEMC */}
+            <div
+              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
+                clickedIndex !== 2 ? "hidden" : ""
+              }`}
+            >
+              <div className="flex flex-col">
+                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                  Full-Stack Developer @&nbsp;
+                  <a
+                    href="https://accentemc.com"
+                    target="_blank"
+                    className="text-indigo-400"
+                  >
+                    AccentEMC
+                  </a>
+                </span>
+                <span className="text-sm xl:text-lg md:text-m">
+                  Jan 2024 - May 2024
+                </span>
+              </div>
+              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                <li className="flex flex-row mt-5 mb-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Engineered a comprehensive learning management system with
+                    Next.js, Firebase, secure authentication, and PayPal
+                    integration.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Developed responsive UI components using React and
+                    TailwindCSS, including an intuitive course catalog and
+                    real-time analytics dashboard.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Architected scalable data models for complex course
+                    structures and content management, reducing administrative
+                    overhead by 35%.
+                  </p>
                 </li>
               </ul>
             </div>
             {/* AccuMed */}
             <div
               className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
-                clickedIndex !== 2 ? "hidden" : ""
+                clickedIndex !== 3 ? "hidden" : ""
               }`}
             >
               <div className="flex flex-col">
@@ -684,25 +789,34 @@ export default function Home() {
                 <li className="flex flex-row mt-5 mb-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Spearheaded the implementation of Robotic Process Automation (RPA) solutions, reducing human error by 25% and increasing work speed by 30% in daily operations.
+                    Spearheaded the implementation of Robotic Process Automation
+                    (RPA) solutions, reducing human error by 25% and increasing
+                    work speed by 30% in daily operations.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Conducted comprehensive workflow analyses to identify and execute high-impact automation opportunities, enhancing overall operational efficiency.
+                    Conducted comprehensive workflow analyses to identify and
+                    execute high-impact automation opportunities, enhancing
+                    overall operational efficiency.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Collaborated with cross-functional teams to gather requirements and align automation projects with organizational objectives, ensuring seamless integration of RPA solutions and web scrapping.
+                    Collaborated with cross-functional teams to gather
+                    requirements and align automation projects with
+                    organizational objectives, ensuring seamless integration of
+                    RPA solutions and web scrapping.
                   </p>
                 </li>
                 <li className="flex flex-row mt-2 text-justify">
                   <p className="text-indigo-400 mr-5">▹</p>
                   <p>
-                    Developed and maintained detailed documentation for all RPA solutions, facilitating knowledge transfer and supporting long-term maintenance efforts.
+                    Developed and maintained detailed documentation for all RPA
+                    solutions, facilitating knowledge transfer and supporting
+                    long-term maintenance efforts.
                   </p>
                 </li>
               </ul>
