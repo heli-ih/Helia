@@ -70,6 +70,48 @@ export function ProjectsCarousel() {
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
+            src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Screenshot%202025-09-07%20at%2017.13.10.png?alt=media&token=149b0c9f-ef94-4917-85e8-cee7716e1153"
+            alt="Nicolas Luna Coaching"
+            className="h-full w-full object-cover opacity-35"
+          />
+        </div>
+        <div className="absolute inset-0 grid h-full w-full items-end ">
+          <div className="flex flex-col justify-center items-center mb-10 sm:mb-10 md:mb-10 text-gray-200 px-14 md:px-20">
+            <span className="text-[12px] sm:text-lg md:text-2xl font-bold ">
+              Nicolas Luna Coaching
+            </span>
+            <span className="text-[10px] sm:text-xs md:text-lg font-semibold text-justify">
+              Designed and developed a user-focused website for a coach, combining intensive UX research with a polished, portfolio-style presentation
+            </span>
+            <span className="text-indigo-300 text-[10px] sm:text-xs md:text-lg font-bold shadow-2xl">
+              NextJS, React, TailwindCSS, Figma
+            </span>
+            <div>
+              <a href="https://www.nicolaslunacoaching.com" target="_blank">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 22 22"
+                  strokeWidth="1.5"
+                  stroke="#EEEEEE"
+                  className="w-5 h-5"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* img 3 */}
+      <div className="relative h-full w-full overflow-hidden">
+        <div className="bg-gray-900 ">
+          <img
             src="https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Nav.png?alt=media&token=f0e59167-6bfd-45b1-a61b-4245f8f8f4dd"
             alt="CUD Indoor map Navigator"
             className="h-full w-full object-cover opacity-35"
@@ -112,7 +154,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 3 */}
+      {/* img 4 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
@@ -160,7 +202,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 4 */}
+      {/* img 5 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img
@@ -206,7 +248,7 @@ export function ProjectsCarousel() {
         </div>
       </div>
 
-      {/* img 5 */}
+      {/* img 6 */}
       <div className="relative h-full w-full overflow-hidden">
         <div className="bg-gray-900 ">
           <img

@@ -9,23 +9,24 @@ import { useState } from "react";
 export default function Home() {
   const skills = [
     "React",
-    "React Native",
     "NextJS",
-    "SvelteKit",
-    "Laravel11",
+    "React Native",
     "PHP",
+    "Laravel11",
     "JavaScript",
     "Typescript",
     "TailwindCSS",
+    "Python",
+    "SvelteKit",
     "MySQL",
     "PostgreSQL",
     "Prisma",
     "Bootstrap",
     "React3Fiber",
     "ThreeJS",
-    "Python",
     "Github",
     "Figma",
+    "Power BI",
     "Sketch",
     "Slack",
     "Trello",
@@ -153,6 +154,362 @@ export default function Home() {
               alt="Helia Haghighi"
               className="rounded-lg shadow-xl border-2 border-indigo-300"
             />
+          </div>
+        </div>
+      </div>
+
+      {/* EXPERIENCES */}
+      <div id="experiences" className="p-7 lg:p-40 md:p-20 sm:p-10">
+        <div className="inline-flex items-center justify-center font-bold text-2xl xl:text-5xl md:text-4xl sm:text-3xl ">
+          <span className="text-gray-200">Experiences</span>
+        </div>
+
+        <div className="flex flex-col sm:flex-row mt-12 text-gray-400">
+          <div className=" sm:w-[30%] py-3">
+            <ul className="h-full">
+              {experiences.map((item, index) => (
+                <li
+                  key={index}
+                  className={`px-5 pb-2 pt-3 cursor-pointer text-sm xl:text-lg md:text-m ${
+                    clickedIndex === index
+                      ? "border-l-2 border-y-2 border-indigo-400 text-white bg-indigo-400 bg-opacity-15 clickEffect w-[40%] sm:w-[100%]"
+                      : ""
+                  }`}
+                  onClick={() => handleItemClick(index)}
+                >
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="overflow-y-auto sm:w-[70%] ">
+            {/* Milele */}
+            <div
+              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
+                clickedIndex !== 0 ? "hidden" : ""
+              }`}
+            >
+              <div className="flex flex-col">
+                {/* Market and Data Analyst */}
+                <div className="flex flex-col">
+                  <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                    Market and Data Analyst @&nbsp;
+                    <a
+                      href="https://www.milele.com/"
+                      target="_blank"
+                      className="text-indigo-400"
+                    >
+                      Milele
+                    </a>
+                  </span>
+                  <span className="text-sm xl:text-lg md:text-m">
+                    Nov 2025 - Present
+                  </span>
+                </div>
+                <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Conducted market and competitor research using public
+                      datasets and industry reports to identify product gaps and
+                      emerging opportunities; analyzed large datasets and
+                      delivered Power BI dashboards that informed product
+                      planning, benchmarking, and strategic decision-making.
+                    </p>
+                  </li>
+                </ul>
+                <div className="flex flex-col">
+                  <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                    Business Analyst @&nbsp;
+                    <a
+                      href="https://www.milele.com/"
+                      target="_blank"
+                      className="text-indigo-400"
+                    >
+                      Milele
+                    </a>
+                  </span>
+                  <span className="text-sm xl:text-lg md:text-m">
+                    Jan 2025 - Nov 2025
+                  </span>
+                </div>
+                <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Appointed by the CSO to lead a strategic team aimed at
+                      transforming order fulfillment processes by investigating
+                      inefficiencies and conducting surveys to uncover gaps
+                      between departments like Sales and Operations.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Identified stakeholders independently and align
+                      cross-functional partners toward project completion goals.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Bridged the gap between marketing vision and technical
+                      execution through requirement elicitation, journey
+                      mapping, and product structure definition in order to
+                      identify potential business opportunities.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Led the company's SAP S/4HANA consolidation and migration
+                      strategy, documenting business processes across platforms
+                      like NetSuite and SharePoint and ensuring alignment with
+                      SAP capabilities to reduce customization and maximize
+                      automation.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Partnered with the FP&A department to automate financial
+                      data consolidation and reporting, reducing manual
+                      overhead, using data to influence decision-making and
+                      improving financial visibility.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Collaborated with the Development team to translate
+                      business needs into actionable technical requirements.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Enhanced UX and functionality optimization to increase
+                      customer satisfaction and conversion.
+                    </p>
+                  </li>
+                </ul>
+                <div className="flex flex-col">
+                  <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 pt-10">
+                    Software Developer @&nbsp;
+                    <a
+                      href="https://www.milele.com/"
+                      target="_blank"
+                      className="text-indigo-400"
+                    >
+                      Milele
+                    </a>
+                  </span>
+                  <span className="text-sm xl:text-lg md:text-m">
+                    Oct 2024 - May 2025
+                  </span>
+                </div>
+                <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                  <li className="flex flex-row mt-5 mb-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Engineered an end-to-end secure testing platform with
+                      anti-cheating mechanisms leveraging Laravel 11.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Developed bulk question import system and invitation email
+                      infrastructure, reducing creation time by 60%.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Integrated TensorFlow.js for advanced anti-cheating
+                      detection, including tab switching and window blur
+                      monitoring, achieving 95% fraud prevention rate.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Implemented comprehensive time-based analytics dashboard,
+                      generating detailed performance metrics.
+                    </p>
+                  </li>
+                  <li className="flex flex-row mt-2 text-justify">
+                    <p className="text-indigo-400 mr-5">▹</p>
+                    <p>
+                      Developed a secure file storage system and session
+                      management, maintaining 80% data integrity and
+                      scalability.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            {/* Peekabox */}
+            <div
+              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
+                clickedIndex !== 1 ? "hidden" : ""
+              }`}
+            >
+              <div className="flex flex-col">
+                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                  UI/UX Team Lead & Designer @&nbsp;
+                  <a
+                    href="https://www.linkedin.com/company/peekabox/mycompany/"
+                    target="_blank"
+                    className="text-indigo-400"
+                  >
+                    Peekabox
+                  </a>
+                </span>
+                <span className="text-sm xl:text-lg md:text-m">
+                  May 2024 - Oct 2024
+                </span>
+              </div>
+              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                <li className="flex flex-row mt-5 mb-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Directed end-to-end user research and wireframing for SaaS
+                    products, improving user engagement metrics by implementing
+                    data-driven design solutions.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Created high-fidelity prototypes and design systems using
+                    Figma, conducting user testing sessions to optimize
+                    interface accessibility and user flows.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Collaborated closely with product managers and developers to
+                    ensure seamless handoff from design to development and
+                    alignment with business goals.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Led multiple design iterations based on usability testing
+                    and analytics feedback, resulting in a 20% increase in
+                    feature adoption rates.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            {/* AccentEMC */}
+            <div
+              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
+                clickedIndex !== 2 ? "hidden" : ""
+              }`}
+            >
+              <div className="flex flex-col">
+                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                  Full-Stack Developer @&nbsp;
+                  <a
+                    href="https://accentemc.com"
+                    target="_blank"
+                    className="text-indigo-400"
+                  >
+                    AccentEMC
+                  </a>
+                </span>
+                <span className="text-sm xl:text-lg md:text-m">
+                  Jan 2024 - May 2024
+                </span>
+              </div>
+              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                <li className="flex flex-row mt-5 mb-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Engineered a comprehensive learning management system with
+                    Next.js, Firebase, secure authentication, and PayPal
+                    integration.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Developed responsive UI components using React and
+                    TailwindCSS, including an intuitive course catalog and
+                    real-time analytics dashboard.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Architected scalable data models for complex course
+                    structures and content management, reducing administrative
+                    overhead by 35%.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            {/* AccuMed */}
+            <div
+              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
+                clickedIndex !== 3 ? "hidden" : ""
+              }`}
+            >
+              <div className="flex flex-col">
+                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
+                  RPA Developer @&nbsp;
+                  <a
+                    href="http://www.accumed.sa"
+                    target="_blank"
+                    className="text-indigo-400"
+                  >
+                    AccuMed
+                  </a>
+                </span>
+                <span className="text-sm xl:text-lg md:text-m">
+                  Jun 2023 - Aug 2023
+                </span>
+              </div>
+              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
+                <li className="flex flex-row mt-5 mb-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Spearheaded the implementation of Robotic Process Automation
+                    (RPA) solutions, reducing human error by 25% and increasing
+                    work speed by 30% in daily operations.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Conducted comprehensive workflow analyses to identify and
+                    execute high-impact automation opportunities, enhancing
+                    overall operational efficiency.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Collaborated with cross-functional teams to gather
+                    requirements and align automation projects with
+                    organizational objectives, ensuring seamless integration of
+                    RPA solutions and web scrapping.
+                  </p>
+                </li>
+                <li className="flex flex-row mt-2 text-justify">
+                  <p className="text-indigo-400 mr-5">▹</p>
+                  <p>
+                    Developed and maintained detailed documentation for all RPA
+                    solutions, facilitating knowledge transfer and supporting
+                    long-term maintenance efforts.
+                  </p>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -544,349 +901,6 @@ export default function Home() {
               </span>
               <span className="mt-[20%]">HTML, JavaScript, TailwindCSS</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* EXPERIENCES */}
-      <div id="experiences" className="p-7 lg:p-40 md:p-20 sm:p-10">
-        <div className="inline-flex items-center justify-center font-bold text-2xl xl:text-5xl md:text-4xl sm:text-3xl ">
-          <span className="text-gray-200">Experiences</span>
-        </div>
-
-        <div className="flex flex-col sm:flex-row mt-12 text-gray-400">
-          <div className=" sm:w-[30%] py-3">
-            <ul className="h-full">
-              {experiences.map((item, index) => (
-                <li
-                  key={index}
-                  className={`px-5 pb-2 pt-3 cursor-pointer text-sm xl:text-lg md:text-m ${
-                    clickedIndex === index
-                      ? "border-l-2 border-y-2 border-indigo-400 text-white bg-indigo-400 bg-opacity-15 clickEffect w-[40%] sm:w-[100%]"
-                      : ""
-                  }`}
-                  onClick={() => handleItemClick(index)}
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="overflow-y-auto sm:w-[70%] ">
-            {/* Milele */}
-            <div
-              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
-                clickedIndex !== 0 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <div className="flex flex-col">
-                  <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                    Technical Business Analyst @&nbsp;
-                    <a
-                      href="https://www.milele.com/"
-                      target="_blank"
-                      className="text-indigo-400"
-                    >
-                      Milele
-                    </a>
-                  </span>
-                  <span className="text-sm xl:text-lg md:text-m">
-                    Feb 2024 - Present
-                  </span>
-                </div>
-                <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
-                  <li className="flex flex-row mt-5 mb-2 text-justify">
-                    <p className="text-indigo-400 mr-5">▹</p>
-                    <p>
-                      Supported in the development and presentation of the SAP
-                      S/4HANA Consolidation Strategy, focusing on migration,
-                      integration, and process optimization.
-                    </p>
-                  </li>
-                  <li className="flex flex-row mt-2 text-justify">
-                    <p className="text-indigo-400 mr-5">▹</p>
-                    <p>
-                      Documented business processes across platforms like
-                      NetSuite and SharePoint, aligning them with SAP’s
-                      capabilities to reduce customization, and maximize
-                      automation.
-                    </p>
-                  </li>
-                  <li className="flex flex-row mt-2 text-justify">
-                    <p className="text-indigo-400 mr-5">▹</p>
-                    <p>
-                      Assisted in data migration planning and cleanup to ensure
-                      data integrity during the transition.- Assisted in data
-                      migration planning and cleanup to ensure data integrity
-                      during the transition.
-                    </p>
-                  </li>
-                </ul>
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 pt-10">
-                  Software Developer @&nbsp;
-                  <a
-                    href="https://www.milele.com/"
-                    target="_blank"
-                    className="text-indigo-400"
-                  >
-                    Milele
-                  </a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  Oct 2024 - Present
-                </span>
-              </div>
-              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
-                <li className="flex flex-row mt-5 mb-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Engineered a secure testing platform with anti-cheating
-                    mechanisms leveraging Laravel 11.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Developed bulk question import system and invitation email
-                    infrastructure, reducing creation time by 60%.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Integrated TensorFlow.js for advanced anti-cheating
-                    detection, including tab switching and window blur
-                    monitoring, achieving 95% fraud prevention rate.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Implemented comprehensive time-based analytics dashboard,
-                    generating detailed performance metrics.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Developed a secure file storage system and session
-                    management, maintaining 80% data integrity.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            {/* Peekabox */}
-            <div
-              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
-                clickedIndex !== 1 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                  UI/UX Team Lead & Designer @&nbsp;
-                  <a
-                    href="https://www.linkedin.com/company/peekabox/mycompany/"
-                    target="_blank"
-                    className="text-indigo-400"
-                  >
-                    Peekabox
-                  </a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  May 2024 - Oct 2024
-                </span>
-              </div>
-              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
-                <li className="flex flex-row mt-5 mb-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Directed end-to-end user research and wireframing for SaaS
-                    products, improving user engagement metrics by implementing
-                    data-driven design solutions.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Created high-fidelity prototypes and design systems using
-                    Figma, conducting user testing sessions to optimize
-                    interface accessibility and user flows.{" "}
-                  </p>
-                </li>
-              </ul>
-            </div>
-            {/* AccentEMC */}
-            <div
-              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
-                clickedIndex !== 2 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                  Full-Stack Developer @&nbsp;
-                  <a
-                    href="https://accentemc.com"
-                    target="_blank"
-                    className="text-indigo-400"
-                  >
-                    AccentEMC
-                  </a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  Jan 2024 - May 2024
-                </span>
-              </div>
-              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
-                <li className="flex flex-row mt-5 mb-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Engineered a comprehensive learning management system with
-                    Next.js, Firebase, secure authentication, and PayPal
-                    integration.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Developed responsive UI components using React and
-                    TailwindCSS, including an intuitive course catalog and
-                    real-time analytics dashboard.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Architected scalable data models for complex course
-                    structures and content management, reducing administrative
-                    overhead by 35%.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            {/* AccuMed */}
-            <div
-              className={`pl-5 sm:pl-10 sm:pr-6  py-5 text-base rounded-lg border-l-2 border-indigo-400  ${
-                clickedIndex !== 3 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                  RPA Developer @&nbsp;
-                  <a
-                    href="http://www.accumed.sa"
-                    target="_blank"
-                    className="text-indigo-400"
-                  >
-                    AccuMed
-                  </a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  Jun 2023 - Aug 2023
-                </span>
-              </div>
-              <ul className=" text-xs 2xl:w-[80%] sm:text-xs md:text-lg">
-                <li className="flex flex-row mt-5 mb-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Spearheaded the implementation of Robotic Process Automation
-                    (RPA) solutions, reducing human error by 25% and increasing
-                    work speed by 30% in daily operations.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Conducted comprehensive workflow analyses to identify and
-                    execute high-impact automation opportunities, enhancing
-                    overall operational efficiency.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Collaborated with cross-functional teams to gather
-                    requirements and align automation projects with
-                    organizational objectives, ensuring seamless integration of
-                    RPA solutions and web scrapping.
-                  </p>
-                </li>
-                <li className="flex flex-row mt-2 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Developed and maintained detailed documentation for all RPA
-                    solutions, facilitating knowledge transfer and supporting
-                    long-term maintenance efforts.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            {/* <div
-              className={`pl-10 pr-6 sm:px-10 py-5 text-base rounded-lg border-x-2 border-indigo-400 ${
-                clickedIndex !== 1 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                  Administrative Assistant @&nbsp;
-                  <a
-                    href="https://www.cud.ac.ae/"
-                    target="_blank"
-                    className="text-indigo-400"
-                  >
-                    CUD
-                  </a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  Feb 2023 - Present
-                </span>
-              </div>
-              <ul className="w-[85%] text-xs 2xl:w-[70%] sm:text-m">
-                <li className="flex flex-row my-5 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                    veritatis nisi
-                  </p>
-                </li>
-                <li className="flex flex-row my-5 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div
-              className={`pl-10 pr-6 sm:px-10 py-5 text-base rounded-lg border-x-2 border-indigo-400 ${
-                clickedIndex !== 2 ? "hidden" : ""
-              }`}
-            >
-              <div className="flex flex-col">
-                <span className="text-lg xl:text-3xl md:text-2xl font-extrabold text-gray-200 ">
-                  Private Math Tutor -&nbsp;
-                  <a className="text-indigo-400">Freelance</a>
-                </span>
-                <span className="text-sm xl:text-lg md:text-m">
-                  Jun 2023 - Aug 2023
-                </span>
-              </div>
-              <ul className="w-[85%] text-xs 2xl:w-[70%] sm:text-m">
-                <li className="flex flex-row my-5 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam
-                    veritatis nisi
-                  </p>
-                </li>
-                <li className="flex flex-row my-5 text-justify">
-                  <p className="text-indigo-400 mr-5">▹</p>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  </p>
-                </li>
-              </ul>
-            </div> */}
           </div>
         </div>
       </div>

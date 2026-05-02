@@ -29,7 +29,7 @@ export function SideNavbar() {
         placeholder={"side navbar "}
       >
         <div className=" flex items-center justify-between px-7 py-5 bg-indigo-400">
-          <h3 className="text-lg">Manu</h3>
+          <h3 className="text-lg">Helia Haghighi</h3>
           <button onClick={() => setOpen(false)}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
