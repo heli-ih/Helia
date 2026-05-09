@@ -1,10 +1,17 @@
 'use client'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { projects } from '@/sections/Projects'
+import { groups as experienceGroups } from '@/sections/Changelog'
 
 type Section = 'me' | 'origin' | 'projects' | 'stack' | 'changelog' | 'achievements' | 'certifications' | 'testimonials' | 'collab'
 
 interface SidebarProps {
   active: Section
   onSelect: (s: Section) => void
+  isOpen?: boolean
+  onClose?: () => void
+  mobileSubMenu?: Section | null
+  onMobileSubMenuChange?: (s: Section | null) => void
 }
 
 const endpoints: { method: 'GET' | 'POST'; route: string; id: Section }[] = [
@@ -19,10 +26,23 @@ const endpoints: { method: 'GET' | 'POST'; route: string; id: Section }[] = [
   { method: 'POST', route: '/collab',         id: 'collab'         },
 ]
 
-export default function Sidebar({ active, onSelect }: SidebarProps) {
-  return (
-    <aside
-      style={{
+// Sections that have a per-item sub-list. On mobile we expose this list inside
+// the sidebar instead of within the section's own column.
+const SUB_NAV_SECTIONS = new Set<Section>(['projects', 'changelog'])
+
+export default function Sidebar({
+  active,
+  onSelect,
+  isOpen = false,
+  onClose,
+  mobileSubMenu = null,
+  onMobileSubMenuChange,
+}: SidebarProps) {
+  const { isMobile, isTablet } = useBreakpoint()
+  const isSmall = isMobile || isTablet
+
+  const asideStyle: React.CSSProperties = isSmall
+    ? {
         width: '210px',
         minWidth: '210px',
         background: '#0e0e11',
@@ -32,8 +52,71 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
         padding: '28px 0',
         gap: 0,
         overflowY: 'auto',
-      }}
-    >
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        height: '100vh',
+        zIndex: 99,
+        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 0.3s ease',
+      }
+    : {
+        width: '210px',
+        minWidth: '210px',
+        background: '#0e0e11',
+        borderRight: '0.5px solid rgba(255,255,255,0.06)',
+        display: 'flex',
+        flexDirection: 'column',
+        padding: '28px 0',
+        gap: 0,
+        overflowY: 'auto',
+      }
+
+  // Mobile-only: when a section with a sub-list is selected, show that
+  // sub-list in place of the main nav. Tapping a sub-item opens the section
+  // pre-pointed at that item via the section's existing localStorage key.
+  const showSubMenu = isMobile && mobileSubMenu !== null
+
+  const handleMainSelect = (id: Section) => {
+    if (isMobile && SUB_NAV_SECTIONS.has(id)) {
+      onMobileSubMenuChange?.(id)
+      return
+    }
+    onSelect(id)
+    onClose?.()
+  }
+
+  const handleSubSelect = (storageKey: string, value: string, parent: Section) => {
+    try { localStorage.setItem(storageKey, value) } catch { /* ignore */ }
+    onMobileSubMenuChange?.(null)
+    onSelect(parent)
+    onClose?.()
+  }
+
+  const subItems: { key: string; label: string; meta: string }[] = (() => {
+    if (mobileSubMenu === 'projects') {
+      return projects.map(p => ({ key: p.id, label: p.name, meta: p.type }))
+    }
+    if (mobileSubMenu === 'changelog') {
+      return experienceGroups.map(g => ({ key: g.key, label: g.label, meta: g.dateRange }))
+    }
+    return []
+  })()
+
+  return (
+    <>
+      {isSmall && isOpen && (
+        <div
+          onClick={() => { onMobileSubMenuChange?.(null); onClose?.() }}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.5)',
+            zIndex: 98,
+          }}
+        />
+      )}
+      <aside style={asideStyle}>
       {/* Logo */}
       <div style={{ padding: '0 20px 28px', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
         <div style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', fontWeight: 600, color: '#E9E9EF', letterSpacing: '-0.02em' }}>
@@ -44,82 +127,159 @@ export default function Sidebar({ active, onSelect }: SidebarProps) {
         </div>
       </div>
 
-      {/* Nav label */}
-      <div style={{ padding: '20px 20px 10px', fontSize: '11px', color: 'var(--text-primary)', letterSpacing: '0.12em', fontWeight: 700 }}>
-        ENDPOINTS
-      </div>
+      {showSubMenu ? (
+        <>
+          {/* Back row */}
+          <button
+            onClick={() => onMobileSubMenuChange?.(null)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              padding: '14px 20px 10px',
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+              width: '100%',
+              textAlign: 'left',
+              color: 'var(--text-muted)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '12px',
+              letterSpacing: '0.08em',
+            }}
+          >
+            <span aria-hidden="true">←</span>
+            <span>BACK</span>
+          </button>
+          <div style={{ padding: '0 20px 10px', fontSize: '11px', color: 'var(--text-primary)', letterSpacing: '0.12em', fontWeight: 700 }}>
+            {mobileSubMenu === 'projects' ? 'PROJECTS' : 'EXPERIENCE'}
+          </div>
 
-      {/* Nav items */}
-      {endpoints.map(({ method, route, id }) => (
-        <button
-          key={id}
-          onClick={() => onSelect(id)}
-          style={{
-            position: 'relative',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-            padding: '9px 20px',
-            background: active === id ? 'rgba(96,112,200,0.06)' : 'transparent',
-            border: 'none',
-            cursor: 'pointer',
-            width: '100%',
-            textAlign: 'left',
-            transition: 'background-color 0.2s cubic-bezier(0.16,1,0.3,1)',
-          }}
-          onMouseEnter={e => {
-            if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.03)'
-          }}
-          onMouseLeave={e => {
-            if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
-          }}
-        >
-          {active === id && (
-            <span
-              key={`indicator-${id}`}
-              aria-hidden="true"
+          {subItems.map((item, i) => {
+            const storageKey = mobileSubMenu === 'projects' ? 'projects-selected' : 'changelog-selected'
+            const parent = mobileSubMenu as Section
+            return (
+              <button
+                key={item.key}
+                onClick={() => handleSubSelect(storageKey, item.key, parent)}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'left',
+                  padding: '10px 20px',
+                  background: 'transparent',
+                  border: 'none',
+                  borderLeft: '2px solid transparent',
+                  cursor: 'pointer',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                    [{String(i).padStart(2, '0')}]
+                  </span>
+                  <span style={{
+                    fontSize: '14px',
+                    color: 'var(--text-secondary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 500,
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}>
+                    {item.label}
+                  </span>
+                </div>
+                <div style={{ fontSize: '11px', color: 'var(--text-secondary)', paddingLeft: '30px', fontFamily: 'var(--font-mono)' }}>
+                  {item.meta}
+                </div>
+              </button>
+            )
+          })}
+        </>
+      ) : (
+        <>
+          {/* Nav label */}
+          <div style={{ padding: '20px 20px 10px', fontSize: '11px', color: 'var(--text-primary)', letterSpacing: '0.12em', fontWeight: 700 }}>
+            ENDPOINTS
+          </div>
+
+          {/* Nav items */}
+          {endpoints.map(({ method, route, id }) => (
+            <button
+              key={id}
+              onClick={() => handleMainSelect(id)}
               style={{
-                position: 'absolute',
-                left: 0,
-                top: 0,
-                bottom: 0,
-                width: '2px',
-                background: 'var(--purple)',
-                transformOrigin: 'center',
-                animation: 'slideIndicator 0.2s ease forwards',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                padding: '9px 20px',
+                background: active === id ? 'rgba(96,112,200,0.06)' : 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                width: '100%',
+                textAlign: 'left',
+                transition: 'background-color 0.2s cubic-bezier(0.16,1,0.3,1)',
               }}
-            />
-          )}
-          <span style={{
-            fontSize: '11px',
-            fontWeight: 600,
-            padding: '2px 5px',
-            borderRadius: '3px',
-            background: method === 'GET' ? 'rgba(62,207,142,0.12)' : 'rgba(96,112,200,0.12)',
-            color: method === 'GET' ? 'var(--green)' : 'var(--purple)',
-            letterSpacing: '0.04em',
-            flexShrink: 0,
-          }}>
-            {method}
-          </span>
-          <span style={{
-            fontSize: '14px',
-            color: active === id ? '#c8c8d4' : 'var(--text-muted)',
-            fontFamily: 'var(--font-mono)',
-            transition: 'color 0.15s',
-          }}>
-            {route}
-          </span>
-        </button>
-      ))}
+              onMouseEnter={e => {
+                if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.03)'
+              }}
+              onMouseLeave={e => {
+                if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
+              }}
+            >
+              {active === id && (
+                <span
+                  key={`indicator-${id}`}
+                  aria-hidden="true"
+                  style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: '2px',
+                    background: 'var(--purple)',
+                    transformOrigin: 'center',
+                    animation: 'slideIndicator 0.2s ease forwards',
+                  }}
+                />
+              )}
+              <span style={{
+                fontSize: '11px',
+                fontWeight: 600,
+                padding: '2px 5px',
+                borderRadius: '3px',
+                background: method === 'GET' ? 'rgba(62,207,142,0.12)' : 'rgba(96,112,200,0.12)',
+                color: method === 'GET' ? 'var(--green)' : 'var(--purple)',
+                letterSpacing: '0.04em',
+                flexShrink: 0,
+              }}>
+                {method}
+              </span>
+              <span style={{
+                fontSize: '14px',
+                color: active === id ? '#c8c8d4' : 'var(--text-muted)',
+                fontFamily: 'var(--font-mono)',
+                transition: 'color 0.15s',
+              }}>
+                {route}
+              </span>
+              {isMobile && SUB_NAV_SECTIONS.has(id) && (
+                <span aria-hidden="true" style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>›</span>
+              )}
+            </button>
+          ))}
 
-      {/* System info */}
-      <div style={{ marginTop: 'auto', padding: '20px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 2 }}>
-          <div>uptime<span style={{ float: 'right', color: 'var(--purple)', opacity: 0.7 }}>99.9%</span></div>
-          <div>timezone<span style={{ float: 'right' }}>UAE</span></div>
-        </div>
-      </div>
+          {/* System info */}
+          <div style={{ marginTop: 'auto', padding: '20px', borderTop: '0.5px solid rgba(255,255,255,0.06)' }}>
+            <div style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 2 }}>
+              <div>uptime<span style={{ float: 'right', color: 'var(--purple)', opacity: 0.7 }}>99.9%</span></div>
+              <div>timezone<span style={{ float: 'right' }}>UAE</span></div>
+            </div>
+          </div>
+        </>
+      )}
     </aside>
+    </>
   )
 }

@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const lineStyle = (i: number): React.CSSProperties => ({
   opacity: 0,
@@ -35,7 +36,7 @@ const GitHubMarkSmall = () => (
   </svg>
 )
 
-const projects = [
+export const projects = [
   {
     id: 'skillsage',
     name: 'SkillSage',
@@ -164,6 +165,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
 const STORAGE_KEY = 'projects-selected'
 
 export default function SectionProjects() {
+  const { isMobile, isTablet } = useBreakpoint()
   const [selected, setSelected] = useState<string | null>(projects[0]?.id ?? null)
   const project = projects.find(p => p.id === selected)
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
@@ -215,52 +217,54 @@ export default function SectionProjects() {
   }, [])
 
   return (
-    <div className="section-enter" style={{ display: 'flex', height: '100%', overflow: 'hidden', marginLeft: '-12px' }}>
-      {/* Project list */}
-      <div style={{
-        width: '260px',
-        minWidth: '260px',
-        borderRight: '0.5px solid rgba(255,255,255,0.06)',
-        overflowY: 'auto',
-        padding: '24px 0',
-      }}>
-        {projects.map((p, i) => (
-          <button
-            key={p.id}
-            ref={(el) => { buttonRefs.current[i] = el }}
-            onClick={() => setSelected(p.id)}
-            style={{
-              display: 'block',
-              width: '100%',
-              textAlign: 'left',
-              padding: '12px 20px',
-              background: selected === p.id ? 'rgba(96,112,200,0.06)' : 'transparent',
-              borderLeft: `2px solid ${selected === p.id ? 'var(--purple)' : 'transparent'}`,
-              border: 'none',
-              borderLeftWidth: '2px',
-              borderLeftStyle: 'solid',
-              borderLeftColor: selected === p.id ? 'var(--purple)' : 'transparent',
-              cursor: 'pointer',
-              transition: 'background-color 0.18s cubic-bezier(0.16,1,0.3,1), border-left-color 0.18s ease',
-            }}
-            onMouseEnter={e => { if (selected !== p.id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.02)' }}
-            onMouseLeave={e => { if (selected !== p.id) (e.currentTarget as HTMLButtonElement).style.background = 'transparent' }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
-              <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                [{String(i).padStart(2, '0')}]
-              </span>
-              <span style={{ fontSize: '15px', color: selected === p.id ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-mono)', fontWeight: 500 }}>
-                {p.name}
-              </span>
-            </div>
-            <div style={{ fontSize: '12px', color: 'var(--text-secondary)', paddingLeft: '34px' }}>{p.type}</div>
-          </button>
-        ))}
-      </div>
+    <div className="section-enter" style={{ display: 'flex', flexDirection: 'row', height: '100%', overflow: 'hidden', marginLeft: '-12px' }}>
+      {/* Project list — hidden on mobile (sidebar exposes the sub-menu instead) */}
+      {!isMobile && (
+        <div style={{
+          width: isTablet ? '180px' : '260px',
+          minWidth: isTablet ? '180px' : '260px',
+          borderRight: '0.5px solid rgba(255,255,255,0.06)',
+          overflowY: 'auto',
+          padding: '24px 0',
+        }}>
+          {projects.map((p, i) => (
+            <button
+              key={p.id}
+              ref={(el) => { buttonRefs.current[i] = el }}
+              onClick={() => setSelected(p.id)}
+              style={{
+                display: 'block',
+                width: '100%',
+                textAlign: 'left',
+                padding: isTablet ? '10px 14px' : '12px 20px',
+                background: selected === p.id ? 'rgba(96,112,200,0.06)' : 'transparent',
+                borderLeft: `2px solid ${selected === p.id ? 'var(--purple)' : 'transparent'}`,
+                border: 'none',
+                borderLeftWidth: '2px',
+                borderLeftStyle: 'solid',
+                borderLeftColor: selected === p.id ? 'var(--purple)' : 'transparent',
+                cursor: 'pointer',
+                transition: 'background-color 0.18s cubic-bezier(0.16,1,0.3,1), border-left-color 0.18s ease',
+              }}
+              onMouseEnter={e => { if (selected !== p.id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.02)' }}
+              onMouseLeave={e => { if (selected !== p.id) (e.currentTarget as HTMLButtonElement).style.background = 'transparent' }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                <span style={{ fontSize: isTablet ? '10px' : '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                  [{String(i).padStart(2, '0')}]
+                </span>
+                <span style={{ fontSize: isTablet ? '13px' : '15px', color: selected === p.id ? 'var(--text-primary)' : 'var(--text-secondary)', fontFamily: 'var(--font-mono)', fontWeight: 500 }}>
+                  {p.name}
+                </span>
+              </div>
+              <div style={{ fontSize: isTablet ? '11px' : '12px', color: 'var(--text-secondary)', paddingLeft: isTablet ? '28px' : '34px' }}>{p.type}</div>
+            </button>
+          ))}
+        </div>
+      )}
 
       {/* Project detail */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '28px 32px', marginLeft: '12px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '20px' : '28px 32px', marginLeft: isMobile ? 0 : '12px' }}>
         {!project ? (
           <div style={{ color: 'var(--text-secondary)', fontSize: '15px', fontFamily: 'var(--font-mono)', marginTop: '40px' }}>
             <span style={{ color: 'var(--purple)', opacity: 0.5 }}>←</span>  select a project to inspect

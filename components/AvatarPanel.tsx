@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 type Section = 'me' | 'origin' | 'projects' | 'stack' | 'changelog' | 'achievements' | 'certifications' | 'testimonials' | 'collab'
 
@@ -21,6 +22,7 @@ const avatarMap: Record<Section, { src: string; label: string }> = {
 
 export default function AvatarPanel({ active }: AvatarPanelProps) {
   const [hovered, setHovered] = useState(false)
+  const { isTablet } = useBreakpoint()
 
   // On the landing section, the big in-section avatar owns the visual —
   // render nothing at all so the Me content fills the row width.
@@ -32,8 +34,8 @@ export default function AvatarPanel({ active }: AvatarPanelProps) {
 
   return (
     <div style={{
-      width: '220px',
-      minWidth: '220px',
+      width: isTablet ? '130px' : '220px',
+      minWidth: isTablet ? '130px' : '220px',
       borderLeft: '0.5px solid rgba(255,255,255,0.06)',
       display: 'flex',
       flexDirection: 'column',

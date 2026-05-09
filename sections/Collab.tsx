@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const lineStyle = (i: number): React.CSSProperties => ({
   opacity: 0,
@@ -8,6 +9,7 @@ const lineStyle = (i: number): React.CSSProperties => ({
 })
 
 export default function SectionCollab() {
+  const { isMobile } = useBreakpoint()
   const [email, setEmail] = useState('')
   const [subject, setSubject] = useState('')
   const [message, setMessage] = useState('')
@@ -37,13 +39,13 @@ export default function SectionCollab() {
   }
 
   return (
-    <div className="section-enter" style={{ padding: '32px 36px', overflowY: 'auto', height: '100%' }}>
+    <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--purple)', letterSpacing: '0.1em', marginBottom: '20px' }}>
         202 Accepted — POST /collab
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: '28px',
+        fontSize: isMobile ? '22px' : '28px',
         fontWeight: 700,
         color: 'var(--text-primary)',
         letterSpacing: '-0.02em',
@@ -57,7 +59,7 @@ export default function SectionCollab() {
         fontFamily: 'var(--font-mono)',
         marginTop: '14px',
         lineHeight: 1.85,
-        maxWidth: '480px',
+        maxWidth: isMobile ? '100%' : '480px',
         marginBottom: '24px',
       }}>
         Whether it&apos;s a project, a role, or just a question — send it through.
@@ -69,7 +71,7 @@ export default function SectionCollab() {
         border: '0.5px solid rgba(255,255,255,0.07)',
         borderRadius: '10px',
         padding: '22px',
-        maxWidth: '480px',
+        maxWidth: isMobile ? '100%' : '480px',
       }}>
         {/* Email */}
         <div style={{ marginBottom: '16px', ...lineStyle(0) }}>

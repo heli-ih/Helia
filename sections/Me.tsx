@@ -1,4 +1,5 @@
 'use client'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const GitHubIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -42,10 +43,17 @@ interface MeProps {
 }
 
 export default function SectionMe({ leaving = false }: MeProps) {
+  const { isMobile, isTablet, isSmallMobile, width } = useBreakpoint()
+  // On smaller desktops scale the whole avatar block down so it fits without
+  // crowding the text column. Baseline raised to 1422 so a 1024 viewport
+  // lands at ~0.72 (10% smaller than the previous 0.8). Bubbles are
+  // percentage-positioned, so they ride the scale and stay locked to the
+  // same spot on the avatar at any width.
+  const desktopAvatarScale = !isMobile && !isTablet && width < 1600 ? width / 1600 : 1
   return (
     <div
       className="section-enter"
-      style={{ display: 'flex', height: '100%', overflow: 'visible', minHeight: 0 }}
+      style={{ display: 'flex', flexDirection: (isMobile || isTablet) ? 'column' : 'row', height: '100%', overflow: 'visible', minHeight: 0 }}
     >
       {/* LEFT — content. The inner wrapper uses margin:auto to vertically
           center when content fits, but collapses to 0 when it overflows so
@@ -54,7 +62,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
       <div
         style={{
           flex: 1,
-          padding: '40px 48px',
+          padding: isMobile ? '20px' : '40px 48px',
           display: 'flex',
           flexDirection: 'column',
           overflowY: 'auto',
@@ -79,7 +87,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
           <h1
             style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '64px',
+              fontSize: isMobile ? '32px' : isTablet ? '48px' : width < 1280 ? '44px' : '64px',
               fontWeight: 800,
               color: '#E9E9EF',
               letterSpacing: '-0.04em',
@@ -129,7 +137,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
         <div
           style={{
             display: 'flex',
-            gap: '18px',
+            gap: isSmallMobile ? '6px' : '18px',
             flexWrap: 'wrap',
             ...blockStyle(4),
           }}
@@ -143,9 +151,9 @@ export default function SectionMe({ leaving = false }: MeProps) {
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '6px',
-                padding: '6px 14px',
-                fontSize: '12px',
+                gap: isSmallMobile ? '4px' : '6px',
+                padding: isSmallMobile ? '4px 8px' : '6px 14px',
+                fontSize: isSmallMobile ? '10px' : '12px',
                 borderRadius: '20px',
                 border: '0.5px solid rgba(96,112,200,0.3)',
                 background: 'rgba(96,112,200,0.07)',
@@ -173,20 +181,195 @@ export default function SectionMe({ leaving = false }: MeProps) {
             </a>
           ))}
         </div>
+
+        {/* Mobile + tablet: full avatar + speech bubbles below the links.
+            The avatar size is clamped to viewport so the whole block always
+            fits horizontally; bubble offsets are percentages so their tails
+            stay locked to the same feature on the character regardless of
+            the avatar's rendered size. */}
+        {(isMobile || isTablet) && (
+          <div
+            style={{
+              marginTop: '36px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+              width: '100%',
+              ...blockStyle(5),
+            }}
+          >
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '320px',
+                height: '320px',
+                background: 'radial-gradient(circle at center, rgba(96,112,200,0.12) 0%, transparent 65%)',
+                pointerEvents: 'none',
+              }}
+            />
+            {/* Inner wrap — sized to the avatar. Avatar height uses clamp()
+                so it fits in the viewport on small phones while staying
+                pleasant up to ~380px on tablet. Bubbles use percentage
+                offsets (derived from desktop's 480px calibration) so their
+                tails point at the same spot on the character at any size. */}
+            <div style={{
+              position: 'relative',
+              height: 'clamp(220px, 55vw, 380px)',
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'center',
+            }}>
+              <img
+                src="/avatar-default.jpg"
+                alt="Helia"
+                style={{
+                  position: 'relative',
+                  height: 'clamp(220px, 55vw, 380px)',
+                  width: 'auto',
+                  objectFit: 'contain',
+                  objectPosition: 'bottom center',
+                  filter: 'drop-shadow(0 0 14px rgba(215,210,200,0.35)) drop-shadow(0 0 28px rgba(215,210,200,0.18))',
+                  animation: 'floatY 3.5s ease-in-out infinite',
+                }}
+              />
+              {/* Bubble: UAE Golden Visa Holder — points right toward avatar's left side.
+                  fontSize/padding scale via clamp so the bubble doesn't dwarf
+                  the avatar on small phones. Pushed further outside the
+                  avatar's left edge (-18%) for clear separation. */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '40%',
+                  left: '-18%',
+                  zIndex: 5,
+                  padding: 'clamp(3px, 0.9vw, 6px) clamp(7px, 2.2vw, 12px)',
+                  fontSize: 'clamp(8px, 2.4vw, 11px)',
+                  borderRadius: '18px',
+                  border: '0.5px solid rgba(96,112,200,0.3)',
+                  background: 'rgba(14,16,40,0.85)',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-mono)',
+                  whiteSpace: 'nowrap',
+                  animation: 'floatY 4s ease-in-out infinite',
+                  boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+                }}
+              >
+                UAE Golden Visa Holder
+                <span style={{
+                  position: 'absolute',
+                  right: '-9px',
+                  top: '50%',
+                  width: 0,
+                  height: 0,
+                  transform: 'translateY(-50%)',
+                  borderTop: '7px solid transparent',
+                  borderBottom: '7px solid transparent',
+                  borderLeft: '9px solid rgba(96,112,200,0.3)',
+                  pointerEvents: 'none',
+                }} />
+                <span style={{
+                  position: 'absolute',
+                  right: '-8px',
+                  top: '50%',
+                  width: 0,
+                  height: 0,
+                  transform: 'translateY(-50%)',
+                  borderTop: '6px solid transparent',
+                  borderBottom: '6px solid transparent',
+                  borderLeft: '8px solid rgba(14,16,40,0.85)',
+                  pointerEvents: 'none',
+                }} />
+              </div>
+              {/* Bubble: CS Graduate — points left toward avatar's right side.
+                  fontSize/padding scale via clamp; pushed past the avatar's
+                  right edge (-3%) so the body sits clearly outside the
+                  character with the tail still pointing back at the head. */}
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '62%',
+                  right: '3%',
+                  zIndex: 5,
+                  padding: 'clamp(3px, 0.9vw, 6px) clamp(7px, 2.2vw, 12px)',
+                  fontSize: 'clamp(8px, 2.4vw, 11px)',
+                  borderRadius: '18px',
+                  border: '0.5px solid rgba(96,112,200,0.3)',
+                  background: 'rgba(14,16,40,0.85)',
+                  color: 'var(--text-secondary)',
+                  fontFamily: 'var(--font-mono)',
+                  whiteSpace: 'nowrap',
+                  animation: 'floatY 4.5s ease-in-out infinite -1.8s',
+                  boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+                }}
+              >
+                CS Graduate
+                <span style={{
+                  position: 'absolute',
+                  left: '-9px',
+                  top: '50%',
+                  width: 0,
+                  height: 0,
+                  transform: 'translateY(-50%)',
+                  borderTop: '7px solid transparent',
+                  borderBottom: '7px solid transparent',
+                  borderRight: '9px solid rgba(96,112,200,0.3)',
+                  pointerEvents: 'none',
+                }} />
+                <span style={{
+                  position: 'absolute',
+                  left: '-8px',
+                  top: '50%',
+                  width: 0,
+                  height: 0,
+                  transform: 'translateY(-50%)',
+                  borderTop: '6px solid transparent',
+                  borderBottom: '6px solid transparent',
+                  borderRight: '8px solid rgba(14,16,40,0.85)',
+                  pointerEvents: 'none',
+                }} />
+              </div>
+            </div>
+          </div>
+        )}
        </div>
       </div>
 
-      {/* RIGHT — avatar with radial glow */}
-      <div
+      {/* RIGHT — avatar with radial glow.
+          Wrapper is sized to contain the 480px avatar plus bubble overhang on
+          both sides. Bubbles are anchored to the inner avatar wrap, with
+          offsets that recreate the desktop visual exactly (i.e. measured from
+          the avatar's edges, not the outer wrapper).
+          On tablet, the entire avatar block is shrunk to 20vw via a scaler
+          so the visual relationships between avatar, glow, and bubbles stay
+          identical to desktop. */}
+      {!isMobile && !isTablet && <div
         style={{
-          width: '340px',
+          width: `${500 * desktopAvatarScale}px`,
+          minWidth: `${500 * desktopAvatarScale}px`,
           flexShrink: 0,
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        <div style={{
+          width: '500px',
+          height: '480px',
+          position: 'relative',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+          transform: desktopAvatarScale < 1 ? `scale(${desktopAvatarScale})` : undefined,
+          transformOrigin: 'center center',
+        }}>
         {/* Inner purple glow */}
         <div
           aria-hidden="true"
@@ -202,137 +385,152 @@ export default function SectionMe({ leaving = false }: MeProps) {
             pointerEvents: 'none',
           }}
         />
-        {/* Avatar — flies into the side panel position when navigating away.
-            The PNG has real alpha (the body is genuinely cut out), so
-            filter: drop-shadow() casts a halo that hugs the silhouette.
-            We dropped mix-blend-mode: multiply because (a) alpha makes it
-            redundant and (b) `filter` creates a new stacking context that
-            would otherwise break the multiply backdrop. */}
-        <img
-          src="/avatar-default.jpg"
-          alt="Helia"
-          style={{
-            position: 'relative',
-            height: '480px',
-            width: 'auto',
-            objectFit: 'contain',
-            objectPosition: 'bottom center',
-            filter: 'drop-shadow(0 0 14px rgba(215,210,200,0.35)) drop-shadow(0 0 28px rgba(215,210,200,0.18))',
-            animation: leaving ? 'none' : 'floatY 3.5s ease-in-out infinite',
-            transition:
-              'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease',
-            transform: leaving
-              ? 'translate(calc(100vw - 600px), calc(50vh - 400px)) scale(0.18)'
-              : 'translate(0, 0) scale(1)',
-            opacity: leaving ? 0.7 : 1,
-            transformOrigin: 'bottom center',
-          }}
-        />
-
-        {/* Speech bubble — orbits the avatar's upper-left, tail points right toward avatar. */}
-        {!leaving && (
-          <div
+        {/* Inner wrap — sized to the avatar. Bubbles position-absolute against
+            this so resizing the outer wrapper doesn't change their offset. */}
+        <div style={{
+          position: 'relative',
+          height: '480px',
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+        }}>
+          {/* Avatar — flies into the side panel position when navigating away.
+              The PNG has real alpha (the body is genuinely cut out), so
+              filter: drop-shadow() casts a halo that hugs the silhouette.
+              We dropped mix-blend-mode: multiply because (a) alpha makes it
+              redundant and (b) `filter` creates a new stacking context that
+              would otherwise break the multiply backdrop. */}
+          <img
+            src="/avatar-default.jpg"
+            alt="Helia"
             style={{
-              position: 'absolute',
-              top: '45%',
-              left: '-80px',
-              zIndex: 5,
-              padding: '6px 14px',
-              fontSize: '12px',
-              borderRadius: '20px',
-              border: '0.5px solid rgba(96,112,200,0.3)',
-              background: 'rgba(14,16,40,0.85)',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)',
-              color: 'var(--text-secondary)',
-              fontFamily: 'var(--font-mono)',
-              whiteSpace: 'nowrap',
-              animation: 'floatY 4s ease-in-out infinite',
-              boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+              position: 'relative',
+              height: '480px',
+              width: 'auto',
+              objectFit: 'contain',
+              objectPosition: 'bottom center',
+              filter: 'drop-shadow(0 0 14px rgba(215,210,200,0.35)) drop-shadow(0 0 28px rgba(215,210,200,0.18))',
+              animation: leaving ? 'none' : 'floatY 3.5s ease-in-out infinite',
+              transition:
+                'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease',
+              transform: leaving
+                ? 'translate(calc(100vw - 600px), calc(50vh - 400px)) scale(0.18)'
+                : 'translate(0, 0) scale(1)',
+              opacity: leaving ? 0.7 : 1,
+              transformOrigin: 'bottom center',
             }}
-          >
-            UAE Golden Visa Holder
-            {/* Tail outline (slightly larger, behind the fill) */}
-            <span style={{
-              position: 'absolute',
-              right: '-9px',
-              top: '50%',
-              width: 0,
-              height: 0,
-              transform: 'translateY(-50%)',
-              borderTop: '7px solid transparent',
-              borderBottom: '7px solid transparent',
-              borderLeft: '9px solid rgba(96,112,200,0.3)',
-              pointerEvents: 'none',
-            }} />
-            {/* Tail fill */}
-            <span style={{
-              position: 'absolute',
-              right: '-8px',
-              top: '50%',
-              width: 0,
-              height: 0,
-              transform: 'translateY(-50%)',
-              borderTop: '6px solid transparent',
-              borderBottom: '6px solid transparent',
-              borderLeft: '8px solid rgba(14,16,40,0.85)',
-              pointerEvents: 'none',
-            }} />
-          </div>
-        )}
+          />
 
-        {/* Speech bubble — orbits the avatar's lower-right, tail points left toward avatar. */}
-        {!leaving && (
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '60%',
-              right: '6%',
-              zIndex: 5,
-              padding: '6px 14px',
-              fontSize: '12px',
-              borderRadius: '20px',
-              border: '0.5px solid rgba(96,112,200,0.3)',
-              background: 'rgba(14,16,40,0.85)',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)',
-              color: 'var(--text-secondary)',
-              fontFamily: 'var(--font-mono)',
-              whiteSpace: 'nowrap',
-              animation: 'floatY 4.5s ease-in-out infinite -1.8s',
-              boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
-            }}
-          >
-            CS Graduate
-            {/* Tail outline */}
-            <span style={{
-              position: 'absolute',
-              left: '-9px',
-              top: '50%',
-              width: 0,
-              height: 0,
-              transform: 'translateY(-50%)',
-              borderTop: '7px solid transparent',
-              borderBottom: '7px solid transparent',
-              borderRight: '9px solid rgba(96,112,200,0.3)',
-              pointerEvents: 'none',
-            }} />
-            {/* Tail fill */}
-            <span style={{
-              position: 'absolute',
-              left: '-8px',
-              top: '50%',
-              width: 0,
-              height: 0,
-              transform: 'translateY(-50%)',
-              borderTop: '6px solid transparent',
-              borderBottom: '6px solid transparent',
-              borderRight: '8px solid rgba(14,16,40,0.85)',
-              pointerEvents: 'none',
-            }} />
-          </div>
-        )}
-      </div>
+          {/* Speech bubble — orbits the avatar's upper-left, tail points right toward avatar.
+              Offset is a percentage of the avatar's width (-10/480 ≈ -2%) so
+              it stays locked to the same point regardless of any scaling. */}
+          {!leaving && (
+            <div
+              style={{
+                position: 'absolute',
+                top: '45%',
+                left: '-2%',
+                zIndex: 5,
+                padding: '6px 14px',
+                fontSize: '12px',
+                borderRadius: '20px',
+                border: '0.5px solid rgba(96,112,200,0.3)',
+                background: 'rgba(14,16,40,0.85)',
+                backdropFilter: 'blur(4px)',
+                WebkitBackdropFilter: 'blur(4px)',
+                color: 'var(--text-secondary)',
+                fontFamily: 'var(--font-mono)',
+                whiteSpace: 'nowrap',
+                animation: 'floatY 4s ease-in-out infinite',
+                boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+              }}
+            >
+              UAE Golden Visa Holder
+              {/* Tail outline (slightly larger, behind the fill) */}
+              <span style={{
+                position: 'absolute',
+                right: '-9px',
+                top: '50%',
+                width: 0,
+                height: 0,
+                transform: 'translateY(-50%)',
+                borderTop: '7px solid transparent',
+                borderBottom: '7px solid transparent',
+                borderLeft: '9px solid rgba(96,112,200,0.3)',
+                pointerEvents: 'none',
+              }} />
+              {/* Tail fill */}
+              <span style={{
+                position: 'absolute',
+                right: '-8px',
+                top: '50%',
+                width: 0,
+                height: 0,
+                transform: 'translateY(-50%)',
+                borderTop: '6px solid transparent',
+                borderBottom: '6px solid transparent',
+                borderLeft: '8px solid rgba(14,16,40,0.85)',
+                pointerEvents: 'none',
+              }} />
+            </div>
+          )}
+
+          {/* Speech bubble — orbits the avatar's lower-right, tail points left toward avatar.
+              Offset is a percentage of the avatar's width (90/480 ≈ 19%) so
+              it stays locked to the same point regardless of any scaling. */}
+          {!leaving && (
+            <div
+              style={{
+                position: 'absolute',
+                bottom: '60%',
+                right: '19%',
+                zIndex: 5,
+                padding: '6px 14px',
+                fontSize: '12px',
+                borderRadius: '20px',
+                border: '0.5px solid rgba(96,112,200,0.3)',
+                background: 'rgba(14,16,40,0.85)',
+                backdropFilter: 'blur(4px)',
+                WebkitBackdropFilter: 'blur(4px)',
+                color: 'var(--text-secondary)',
+                fontFamily: 'var(--font-mono)',
+                whiteSpace: 'nowrap',
+                animation: 'floatY 4.5s ease-in-out infinite -1.8s',
+                boxShadow: '0 4px 18px rgba(0,0,0,0.35)',
+              }}
+            >
+              CS Graduate
+              {/* Tail outline */}
+              <span style={{
+                position: 'absolute',
+                left: '-9px',
+                top: '50%',
+                width: 0,
+                height: 0,
+                transform: 'translateY(-50%)',
+                borderTop: '7px solid transparent',
+                borderBottom: '7px solid transparent',
+                borderRight: '9px solid rgba(96,112,200,0.3)',
+                pointerEvents: 'none',
+              }} />
+              {/* Tail fill */}
+              <span style={{
+                position: 'absolute',
+                left: '-8px',
+                top: '50%',
+                width: 0,
+                height: 0,
+                transform: 'translateY(-50%)',
+                borderTop: '6px solid transparent',
+                borderBottom: '6px solid transparent',
+                borderRight: '8px solid rgba(14,16,40,0.85)',
+                pointerEvents: 'none',
+              }} />
+            </div>
+          )}
+        </div>
+        </div>
+      </div>}
     </div>
   )
 }

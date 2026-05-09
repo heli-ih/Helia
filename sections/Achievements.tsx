@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 type Award = {
   v: string
@@ -43,11 +44,13 @@ const awards: Award[] = [
 
 function AchievementImage({ src }: { src: string }) {
   const [loaded, setLoaded] = useState(false)
+  const { isMobile } = useBreakpoint()
   return (
     <div style={{
       position: 'relative',
       width: '100%',
-      height: 240,
+      height: isMobile ? 'auto' : 240,
+      minHeight: isMobile && !loaded ? 200 : undefined,
       borderRadius: '10px',
       overflow: 'hidden',
       border: '1px solid rgba(230,168,23,0.35)',
@@ -83,8 +86,8 @@ function AchievementImage({ src }: { src: string }) {
         onLoad={() => setLoaded(true)}
         style={{
           width: '100%',
-          height: '100%',
-          objectFit: 'cover',
+          height: isMobile ? 'auto' : '100%',
+          objectFit: isMobile ? 'contain' : 'cover',
           display: 'block',
           userSelect: 'none',
           opacity: loaded ? 1 : 0,
@@ -113,14 +116,15 @@ const cardStyle = (i: number): React.CSSProperties => ({
 })
 
 export default function SectionAchievements() {
+  const { isMobile } = useBreakpoint()
   return (
-    <div className="section-enter" style={{ padding: '32px 36px', overflowY: 'auto', height: '100%' }}>
+    <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
         200 OK — GET /achievements
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: '28px',
+        fontSize: isMobile ? '22px' : '28px',
         fontWeight: 700,
         color: 'var(--text-primary)',
         letterSpacing: '-0.02em',
@@ -128,7 +132,7 @@ export default function SectionAchievements() {
       }}>
         Achievements
       </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '760px', marginTop: '22px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: isMobile ? '100%' : '760px', marginTop: '22px' }}>
         {awards.map((a, i) => {
           const Wrapper = a.link ? 'a' : 'div'
           const wrapperProps = a.link

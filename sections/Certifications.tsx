@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const certifications: { title: string; year: string; image: string; note?: string; link?: string }[] = [
   { title: 'IBM Professional Business Analyst - Certificate',                                       year: 'September 2025', image: 'https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/Certifications%2F2024%2FBusiness_Analyst.jpeg?alt=media&token=e3410ac4-18ba-46bf-ad1c-d6d15c0cdae6', link: 'https://www.coursera.org/account/accomplishments/professional-cert/FOXWC9O6T2YU?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof' },
@@ -64,14 +65,18 @@ function TilePlaceholder() {
   )
 }
 
-function CertTileVisual({ image }: { image: string }) {
+function CertTileVisual({ image, fullSize = false, pdfAspect }: { image: string; fullSize?: boolean; pdfAspect?: number }) {
   const [loaded, setLoaded] = useState(false)
 
   if (isPdf(image)) {
+    // Match the IBM (first card) image's intrinsic aspect on small viewports so
+    // every PDF tile renders at the same dynamic dimensions as that reference.
+    const aspect = pdfAspect && fullSize ? `${pdfAspect}` : (fullSize ? '8.5 / 11' : undefined)
     return (
       <div style={{
         width: '100%',
-        height: 160,
+        aspectRatio: aspect,
+        height: fullSize ? undefined : 160,
         position: 'relative',
         overflow: 'hidden',
         background: '#fff',
@@ -92,6 +97,35 @@ function CertTileVisual({ image }: { image: string }) {
             height: `calc(100% + ${PDF_TOOLBAR_CLIP_PX}px)`,
             border: 'none',
             pointerEvents: 'none',
+            opacity: loaded ? 1 : 0,
+            transition: 'opacity 0.2s ease',
+          }}
+        />
+      </div>
+    )
+  }
+
+  // Non-PDF: in fullSize the wrapper takes the image's intrinsic aspect
+  // (img is in flow, height auto) so the card matches the picture exactly.
+  if (fullSize) {
+    return (
+      <div style={{
+        width: '100%',
+        position: 'relative',
+        overflow: 'hidden',
+        borderBottom: '0.5px solid rgba(255,255,255,0.06)',
+        minHeight: !loaded ? 180 : undefined,
+      }}>
+        {!loaded && <TilePlaceholder />}
+        <img
+          src={image}
+          alt=""
+          onLoad={() => setLoaded(true)}
+          style={{
+            width: '100%',
+            height: 'auto',
+            display: 'block',
+            background: '#0a0a0e',
             opacity: loaded ? 1 : 0,
             transition: 'opacity 0.2s ease',
           }}
@@ -164,10 +198,10 @@ function CertModalDoc({ cert }: { cert: { title: string; image: string } }) {
   )
 }
 
-const cardStyle = (i: number): React.CSSProperties => ({
+const cardStyle = (i: number, fluidHeight: boolean): React.CSSProperties => ({
   display: 'flex',
   flexDirection: 'column',
-  height: '260px',
+  height: fluidHeight ? 'auto' : '260px',
   width: '100%',
   borderRadius: '10px',
   overflow: 'hidden',
@@ -185,8 +219,24 @@ const cardStyle = (i: number): React.CSSProperties => ({
 })
 
 export default function SectionCertifications() {
+  const { isMobile, isTablet } = useBreakpoint()
   const [openIdx, setOpenIdx] = useState<number | null>(null)
   const open = openIdx !== null ? certifications[openIdx] : null
+
+  // Measure the first non-PDF cert (IBM) so PDF previews can match its
+  // width/height ratio dynamically — keeps the grid visually consistent.
+  const [pdfAspect, setPdfAspect] = useState<number | null>(null)
+  useEffect(() => {
+    const ref = certifications.find(c => !isPdf(c.image))
+    if (!ref) return
+    const img = new Image()
+    img.onload = () => {
+      if (img.naturalWidth && img.naturalHeight) {
+        setPdfAspect(img.naturalWidth / img.naturalHeight)
+      }
+    }
+    img.src = ref.image
+  }, [])
 
   // ESC closes the lightbox.
   useEffect(() => {
@@ -197,13 +247,13 @@ export default function SectionCertifications() {
   }, [openIdx])
 
   return (
-    <div className="section-enter" style={{ padding: '32px 36px', overflowY: 'auto', height: '100%' }}>
+    <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
         200 OK — GET /certifications
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: '28px',
+        fontSize: isMobile ? '22px' : '28px',
         fontWeight: 700,
         color: 'var(--text-primary)',
         letterSpacing: '-0.02em',
@@ -214,30 +264,38 @@ export default function SectionCertifications() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))',
+        gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(auto-fill, minmax(240px, 1fr))',
+        // Don't stretch tiles to row height on small viewports — let each card
+        // hug its own image so the wrapper matches the certificate exactly.
+        alignItems: (isMobile || isTablet) ? 'start' : undefined,
         gap: '14px',
-        maxWidth: '1040px',
+        maxWidth: isMobile ? '100%' : '1040px',
         marginTop: '22px',
       }}>
-        {certifications.map((c, i) => (
+        {certifications.map((c, i) => {
+          const interactive = !(isMobile || isTablet)
+          return (
           <button
             key={`${c.title}-${c.year}`}
             type="button"
-            onClick={() => setOpenIdx(i)}
-            aria-label={`Open certificate: ${c.title}`}
-            style={cardStyle(i)}
+            onClick={interactive ? () => setOpenIdx(i) : undefined}
+            disabled={!interactive}
+            aria-label={interactive ? `Open certificate: ${c.title}` : c.title}
+            style={{ ...cardStyle(i, isMobile || isTablet), cursor: interactive ? 'pointer' : 'default' }}
             onMouseEnter={(e) => {
+              if (!interactive) return
               const el = e.currentTarget
               el.style.borderColor = 'rgba(96,112,200,0.5)'
               el.style.transform = 'translateY(-2px)'
             }}
             onMouseLeave={(e) => {
+              if (!interactive) return
               const el = e.currentTarget
               el.style.borderColor = 'rgba(255,255,255,0.08)'
               el.style.transform = 'translateY(0)'
             }}
           >
-            <CertTileVisual image={c.image} />
+            <CertTileVisual image={c.image} fullSize={isMobile || isTablet} pdfAspect={pdfAspect ?? undefined} />
 
             {/* Bottom info */}
             <div style={{
@@ -285,7 +343,8 @@ export default function SectionCertifications() {
               </div>
             </div>
           </button>
-        ))}
+          )
+        })}
       </div>
 
       {/* Lightbox — opens on tile click. Click backdrop / caption / margins to

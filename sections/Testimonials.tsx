@@ -1,4 +1,5 @@
 'use client'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 type Link = { label: string; url: string }
 
@@ -94,14 +95,16 @@ const cardStyle = (i: number): React.CSSProperties => ({
 })
 
 export default function SectionTestimonials() {
+  const { isMobile } = useBreakpoint()
+  const avatarSize = isMobile ? 40 : 56
   return (
-    <div className="section-enter" style={{ padding: '32px 36px', overflowY: 'auto', height: '100%' }}>
+    <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
         200 OK — GET /testimonials
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: '28px',
+        fontSize: isMobile ? '22px' : '28px',
         fontWeight: 700,
         color: 'var(--text-primary)',
         letterSpacing: '-0.02em',
@@ -115,13 +118,13 @@ export default function SectionTestimonials() {
         fontFamily: 'var(--font-mono)',
         marginTop: '14px',
         lineHeight: 1.7,
-        maxWidth: '640px',
+        maxWidth: isMobile ? '100%' : '640px',
         marginBottom: '24px',
       }}>
         What managers, mentors, and collaborators have said.
       </p>
 
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '760px' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: isMobile ? '100%' : '760px' }}>
         {testimonials.map((t, i) => (
           <div
             key={t.id}
@@ -139,12 +142,12 @@ export default function SectionTestimonials() {
               el.style.transform = 'translateY(0)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', alignItems: isMobile ? 'flex-start' : 'center', gap: isMobile ? '8px' : '14px' }}>
               <div
                 aria-hidden="true"
                 style={{
-                  width: 56,
-                  height: 56,
+                  width: avatarSize,
+                  height: avatarSize,
                   borderRadius: '50%',
                   display: 'flex',
                   alignItems: 'center',
@@ -153,7 +156,7 @@ export default function SectionTestimonials() {
                   background: '#1a1830',
                   border: '1px solid rgba(96,112,200,0.4)',
                   boxShadow: '0 0 10px rgba(96,112,200,0.25)',
-                  fontSize: 28,
+                  fontSize: isMobile ? 20 : 28,
                   lineHeight: 1,
                   userSelect: 'none',
                 }}
@@ -206,17 +209,19 @@ export default function SectionTestimonials() {
                       ))}
                     </span>
                   )}
-                  <span style={{
-                    marginLeft: 'auto',
-                    fontSize: '11px',
-                    fontFamily: 'var(--font-mono)',
-                    fontWeight: 400,
-                    color: 'var(--purple)',
-                    letterSpacing: '0.04em',
-                    opacity: 0.85,
-                  }}>
-                    {t.date}
-                  </span>
+                  {!isMobile && (
+                    <span style={{
+                      marginLeft: 'auto',
+                      fontSize: '11px',
+                      fontFamily: 'var(--font-mono)',
+                      fontWeight: 400,
+                      color: 'var(--purple)',
+                      letterSpacing: '0.04em',
+                      opacity: 0.85,
+                    }}>
+                      {t.date}
+                    </span>
+                  )}
                 </div>
                 <div style={{
                   fontSize: '12px',

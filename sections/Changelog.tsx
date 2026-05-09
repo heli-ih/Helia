@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const entries = [
   {
@@ -124,7 +125,7 @@ type Group = {
 
 // Group entries by their `@ Company` suffix; entries without a company become
 // their own single-item group keyed by the full title.
-const groups: Group[] = (() => {
+export const groups: Group[] = (() => {
   const map = new Map<string, Group>()
   const list: Group[] = []
   for (const e of experienceEntries) {
@@ -158,6 +159,7 @@ const lineStyle = (i: number): React.CSSProperties => ({
 const STORAGE_KEY = 'changelog-selected'
 
 export default function SectionChangelog() {
+  const { isMobile, isTablet } = useBreakpoint()
   const [selectedKey, setSelectedKey] = useState<string | null>(groups[0]?.key ?? null)
   const group = groups.find(g => g.key === selectedKey) ?? groups[0]
   const buttonRefs = useRef<(HTMLButtonElement | null)[]>([])
@@ -202,66 +204,68 @@ export default function SectionChangelog() {
 
   return (
     <div className="section-enter" style={{ display: 'flex', height: '100%', overflow: 'hidden', marginLeft: '-12px' }}>
-      {/* Company list */}
-      <div style={{
-        width: '260px',
-        minWidth: '260px',
-        borderRight: '0.5px solid rgba(255,255,255,0.06)',
-        overflowY: 'auto',
-        padding: '24px 0',
-      }}>
-        {groups.map((g, i) => {
-          const isActive = selectedKey === g.key
-          return (
-            <button
-              key={g.key}
-              ref={(el) => { buttonRefs.current[i] = el }}
-              onClick={() => setSelectedKey(g.key)}
-              style={{
-                display: 'block',
-                width: '100%',
-                textAlign: 'left',
-                padding: '12px 20px',
-                background: isActive ? 'rgba(96,112,200,0.06)' : 'transparent',
-                borderLeft: `2px solid ${isActive ? 'var(--purple)' : 'transparent'}`,
-                border: 'none',
-                borderLeftWidth: '2px',
-                borderLeftStyle: 'solid',
-                borderLeftColor: isActive ? 'var(--purple)' : 'transparent',
-                cursor: 'pointer',
-                transition: 'background-color 0.18s cubic-bezier(0.16,1,0.3,1), border-left-color 0.18s ease',
-              }}
-              onMouseEnter={ev => { if (!isActive) (ev.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.02)' }}
-              onMouseLeave={ev => { if (!isActive) (ev.currentTarget as HTMLButtonElement).style.background = 'transparent' }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
-                <span style={{ fontSize: '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
-                  [{String(i).padStart(2, '0')}]
-                </span>
-                <span style={{
-                  fontSize: '15px',
-                  color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: 500,
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  flex: 1,
-                  minWidth: 0,
-                }}>
-                  {g.label}
-                </span>
-              </div>
-              <div style={{ fontSize: '13px', color: 'var(--text-secondary)', paddingLeft: '34px', fontFamily: 'var(--font-mono)' }}>
-                {g.dateRange}
-              </div>
-            </button>
-          )
-        })}
-      </div>
+      {/* Company list — hidden on mobile (sidebar exposes the sub-menu instead) */}
+      {!isMobile && (
+        <div style={{
+          width: isTablet ? '180px' : '260px',
+          minWidth: isTablet ? '180px' : '260px',
+          borderRight: '0.5px solid rgba(255,255,255,0.06)',
+          overflowY: 'auto',
+          padding: '24px 0',
+        }}>
+          {groups.map((g, i) => {
+            const isActive = selectedKey === g.key
+            return (
+              <button
+                key={g.key}
+                ref={(el) => { buttonRefs.current[i] = el }}
+                onClick={() => setSelectedKey(g.key)}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  textAlign: 'left',
+                  padding: isTablet ? '10px 14px' : '12px 20px',
+                  background: isActive ? 'rgba(96,112,200,0.06)' : 'transparent',
+                  borderLeft: `2px solid ${isActive ? 'var(--purple)' : 'transparent'}`,
+                  border: 'none',
+                  borderLeftWidth: '2px',
+                  borderLeftStyle: 'solid',
+                  borderLeftColor: isActive ? 'var(--purple)' : 'transparent',
+                  cursor: 'pointer',
+                  transition: 'background-color 0.18s cubic-bezier(0.16,1,0.3,1), border-left-color 0.18s ease',
+                }}
+                onMouseEnter={ev => { if (!isActive) (ev.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.02)' }}
+                onMouseLeave={ev => { if (!isActive) (ev.currentTarget as HTMLButtonElement).style.background = 'transparent' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
+                  <span style={{ fontSize: isTablet ? '10px' : '11px', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)' }}>
+                    [{String(i).padStart(2, '0')}]
+                  </span>
+                  <span style={{
+                    fontSize: isTablet ? '13px' : '15px',
+                    color: isActive ? 'var(--text-primary)' : 'var(--text-secondary)',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 500,
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    flex: 1,
+                    minWidth: 0,
+                  }}>
+                    {g.label}
+                  </span>
+                </div>
+                <div style={{ fontSize: isTablet ? '11px' : '13px', color: 'var(--text-secondary)', paddingLeft: isTablet ? '28px' : '34px', fontFamily: 'var(--font-mono)' }}>
+                  {g.dateRange}
+                </div>
+              </button>
+            )
+          })}
+        </div>
+      )}
 
       {/* Detail panel */}
-      <div style={{ flex: 1, overflowY: 'auto', padding: '28px 32px', marginLeft: '12px' }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: isMobile ? '20px' : '28px 32px', marginLeft: isMobile ? 0 : '12px' }}>
         {!group ? (
           <div style={{ color: 'var(--text-secondary)', fontSize: '15px', fontFamily: 'var(--font-mono)', marginTop: '40px' }}>
             <span style={{ color: 'var(--purple)', opacity: 0.5 }}>←</span>  select a company to inspect
@@ -276,7 +280,7 @@ export default function SectionChangelog() {
                 The timeline lives at the per-role level only. */}
             <h3 style={{
               fontFamily: 'var(--font-sans)',
-              fontSize: '28px',
+              fontSize: isMobile ? '22px' : '28px',
               fontWeight: 700,
               color: 'var(--text-primary)',
               letterSpacing: '-0.02em',
@@ -293,7 +297,7 @@ export default function SectionChangelog() {
               const { role } = splitTitle(e.title)
               const showRole = group.isCompany && role !== group.label
               return (
-                <div style={{ width: '85%', ...lineStyle(2) }}>
+                <div style={{ width: isMobile ? '100%' : '85%', ...lineStyle(2) }}>
                   {showRole && (
                     <div style={{
                       display: 'flex',
@@ -354,7 +358,7 @@ export default function SectionChangelog() {
 
             {/* Multi-role: stacked sub-blocks separated by hairlines */}
             {group.entries.length > 1 && (
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '85%' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: isMobile ? '100%' : '85%' }}>
                 {group.entries.map((e, idx) => {
                   const { role } = splitTitle(e.title)
                   return (

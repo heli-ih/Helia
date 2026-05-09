@@ -13,6 +13,7 @@ import SectionAchievements from '@/sections/Achievements'
 import SectionCertifications from '@/sections/Certifications'
 import SectionTestimonials from '@/sections/Testimonials'
 import SectionCollab from '@/sections/Collab'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 type Section = 'me' | 'origin' | 'projects' | 'stack' | 'changelog' | 'achievements' | 'certifications' | 'testimonials' | 'collab'
 
@@ -28,6 +29,11 @@ const STORAGE_KEY = 'site-active-section'
 export default function Home() {
   const [active, setActive] = useState<Section>('me')
   const [leaving, setLeaving] = useState(false)
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  // On mobile, tapping projects/experience first expands a sub-list inside the
+  // sidebar; selecting a sub-item then opens the section. null means main nav.
+  const [mobileSubMenu, setMobileSubMenu] = useState<Section | null>(null)
+  const { isMobile, isTablet } = useBreakpoint()
   // Gates section content rendering until the localStorage restore has run,
   // so a refreshed user never sees the landing /me section flash before the
   // saved section takes over.
@@ -63,9 +69,11 @@ export default function Home() {
       setTimeout(() => {
         setActive(s)
         setLeaving(false)
+        if (isMobile) setSidebarOpen(false)
       }, 500)
     } else {
       setActive(s)
+      if (isMobile) setSidebarOpen(false)
     }
   }
 
@@ -97,6 +105,8 @@ export default function Home() {
     return () => window.removeEventListener('keydown', handler)
   }, [active])
 
+  const isSmall = isMobile || isTablet
+
   return (
     <div style={{
       width: '100vw',
@@ -105,7 +115,7 @@ export default function Home() {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '16px',
+      padding: isSmall ? 0 : '16px',
     }}>
       {/* TV / laptop bezel */}
       <div style={{
@@ -113,9 +123,9 @@ export default function Home() {
         height: '100%',
         maxWidth: '1440px',
         background: 'linear-gradient(145deg, #222228, #161619)',
-        borderRadius: '32px',
-        padding: '10px',
-        boxShadow: [
+        borderRadius: isSmall ? 0 : '32px',
+        padding: isSmall ? 0 : '10px',
+        boxShadow: isSmall ? 'none' : [
           '0 0 0 1px rgba(255,255,255,0.07)',
           '0 0 0 1px rgba(0,0,0,0.8)',
           '0 30px 80px rgba(0,0,0,0.9)',
@@ -138,7 +148,7 @@ export default function Home() {
           style={{
             flex: 1,
             background: '#0c0c0e',
-            borderRadius: '22px',
+            borderRadius: isSmall ? 0 : '22px',
             overflow: 'hidden',
             display: 'flex',
             flexDirection: 'column',
@@ -150,10 +160,17 @@ export default function Home() {
             animation: 'bezelGlow 6s ease-in-out infinite',
           }}
         >
-          <Topbar />
+          <Topbar showMenu={isSmall} onMenuClick={() => setSidebarOpen(v => !v)} />
 
-          <div style={{ flex: 1, display: 'flex', overflow: 'hidden' }}>
-            <Sidebar active={active} onSelect={handleSelect} />
+          <div style={{ flex: 1, display: 'flex', flexDirection: isMobile ? 'column' : 'row', overflow: 'hidden' }}>
+            <Sidebar
+              active={active}
+              onSelect={handleSelect}
+              isOpen={sidebarOpen}
+              onClose={() => { setSidebarOpen(false); setMobileSubMenu(null) }}
+              mobileSubMenu={mobileSubMenu}
+              onMobileSubMenuChange={setMobileSubMenu}
+            />
 
             {/* Content — key forces remount = section-enter animation plays.
                 overflow: visible lets the Me-leaving avatar fly across into the AvatarPanel.
@@ -175,7 +192,7 @@ export default function Home() {
               </div>
             </div>
 
-            <AvatarPanel active={active} />
+            {!isMobile && <AvatarPanel active={active} />}
           </div>
 
           <Bottombar active={active} />

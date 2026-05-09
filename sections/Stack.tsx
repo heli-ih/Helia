@@ -1,4 +1,5 @@
 'use client'
+import { useBreakpoint } from '@/hooks/useBreakpoint'
 
 const stackData: Record<string, string[]> = {
   frontend:   ['React', 'NextJS', 'React Native', 'SvelteKit', 'TypeScript', 'TailwindCSS', 'Bootstrap', 'React Three Fiber', 'ThreeJS'],
@@ -20,14 +21,15 @@ const lineStyle = (i: number): React.CSSProperties => ({
 })
 
 export default function SectionStack() {
+  const { isMobile } = useBreakpoint()
   return (
-    <div className="section-enter" style={{ padding: '32px 36px', overflowY: 'auto', height: '100%' }}>
+    <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px', ...lineStyle(0) }}>
         200 OK — GET /stack
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
-        fontSize: '28px',
+        fontSize: isMobile ? '22px' : '28px',
         fontWeight: 700,
         color: 'var(--text-primary)',
         letterSpacing: '-0.02em',
@@ -36,7 +38,7 @@ export default function SectionStack() {
       }}>
         Stack
       </h2>
-      <div style={{ maxWidth: '640px', marginTop: '20px' }}>
+      <div style={{ maxWidth: isMobile ? '100%' : '640px', marginTop: '20px' }}>
         {stackEntries.map(([category, items], i) => (
           <div
             key={category}
