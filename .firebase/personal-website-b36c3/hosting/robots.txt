@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://heliahaghighi.com
+Sitemap: https://heliahaghighi.com/sitemap.xml
