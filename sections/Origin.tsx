@@ -1,12 +1,7 @@
 'use client'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 
-const facts: { label: string; value: string }[] = [
-  { label: 'Degree',     value: 'BSc Computer Science, Canadian University Dubai' },
-  { label: 'Status',   value: 'Golden Vista Holder' },
-  { label: 'Based',      value: 'Dubai, UAE' },
-  { label: 'Languages',  value: 'English' },
-]
+import { FACTS as facts, ORIGIN_STORY } from '@/data/profile'
 
 const lineStyle = (i: number): React.CSSProperties => ({
   opacity: 0,
@@ -34,7 +29,7 @@ export default function SectionOrigin() {
         }}>
           <img
             src="/avatar-default.jpg"
-            alt="Helia"
+            alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
             style={{
               width: '100%',
               height: 'auto',
@@ -67,10 +62,12 @@ export default function SectionOrigin() {
         marginBottom: '28px',
         ...lineStyle(3),
       }}>
-        Driven by challenges, fueled by learning.<br /><br />
-      Completed my Computer Science degree at Canadian University Dubai, 3.95 GPA.
-      With a desire to solve problems through software and automation.
-      I bring products to life by sharpening my skills across full-stack development, data pipelines, and system design. My goal: to contribute to the industry by building things that actually make a difference.
+        {ORIGIN_STORY.map((para, i) => (
+          <span key={i}>
+            {para}
+            {i < ORIGIN_STORY.length - 1 && <><br /><br /></>}
+          </span>
+        ))}
       </p>
 
       {/* Two-column labeled grid */}

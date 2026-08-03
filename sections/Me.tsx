@@ -1,5 +1,6 @@
 'use client'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
+import { NAME, ROLE, BIO, LINKS } from '@/data/profile'
 
 const GitHubIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -27,9 +28,9 @@ const icons: Record<IconKey, React.ReactNode> = {
 }
 
 const links: { label: IconKey; href: string }[] = [
-  { label: 'Github',   href: 'https://github.com/heli-ih' },
-  { label: 'Linkedin', href: 'https://www.linkedin.com/in/helia-haghighi-3a9a99166/' },
-  { label: 'Email',    href: 'mailto:heliaa.haghighi@gmail.com' },
+  { label: 'Github',   href: LINKS.github },
+  { label: 'Linkedin', href: LINKS.linkedin },
+  { label: 'Email',    href: LINKS.email },
 ]
 
 const blockStyle = (n: number): React.CSSProperties => ({
@@ -99,7 +100,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
               backgroundClip: 'text',
             }}
           >
-            Helia Haghighi
+            {NAME}
           </h1>
         </div>
 
@@ -112,7 +113,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
               marginBottom: '32px',
             }}
           >
-            Software Developer · Data Analyst
+            {ROLE}
           </p>
         </div>
 
@@ -127,9 +128,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
               marginBottom: '36px',
             }}
           >
-            I turn complex problems into systems that work. My expertise spans 
-            enterprise solutions, continuously delivering innovative products 
-            that drive business impact.
+            {BIO}
           </p>
         </div>
 
@@ -226,7 +225,9 @@ export default function SectionMe({ leaving = false }: MeProps) {
             }}>
               <img
                 src="/avatar-default.jpg"
-                alt="Helia"
+            fetchPriority="high"
+            decoding="async"
+                alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
                 style={{
                   position: 'relative',
                   height: 'clamp(220px, 55vw, 380px)',
@@ -402,7 +403,9 @@ export default function SectionMe({ leaving = false }: MeProps) {
               would otherwise break the multiply backdrop. */}
           <img
             src="/avatar-default.jpg"
-            alt="Helia"
+            fetchPriority="high"
+            decoding="async"
+            alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
             style={{
               position: 'relative',
               height: '480px',

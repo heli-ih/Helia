@@ -1,38 +1,35 @@
 'use client'
+import Link from 'next/link'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
-import { projects } from '@/sections/Projects'
+import { projects } from '@/data/projects'
+import { SECTIONS, SECTION_BY_ID, type SectionId } from '@/data/sections'
 import { groups as experienceGroups } from '@/sections/Changelog'
 
-type Section = 'me' | 'origin' | 'projects' | 'stack' | 'changelog' | 'achievements' | 'certifications' | 'testimonials' | 'collab'
-
 interface SidebarProps {
-  active: Section
-  onSelect: (s: Section) => void
+  active: SectionId
+  onNavigate: (s: SectionId) => void
   isOpen?: boolean
   onClose?: () => void
-  mobileSubMenu?: Section | null
-  onMobileSubMenuChange?: (s: Section | null) => void
+  mobileSubMenu?: SectionId | null
+  onMobileSubMenuChange?: (s: SectionId | null) => void
 }
-
-const endpoints: { method: 'GET' | 'POST'; route: string; id: Section }[] = [
-  { method: 'GET',  route: '/me',             id: 'me'             },
-  { method: 'GET',  route: '/me/origin',      id: 'origin'         },
-  { method: 'GET',  route: '/stack',          id: 'stack'          },
-  { method: 'GET',  route: '/experience',     id: 'changelog'      },
-  { method: 'GET',  route: '/projects',       id: 'projects'       },
-  { method: 'GET',  route: '/achievements',   id: 'achievements'   },
-  { method: 'GET',  route: '/certifications', id: 'certifications' },
-  { method: 'GET',  route: '/testimonials',   id: 'testimonials'   },
-  { method: 'POST', route: '/collab',         id: 'collab'         },
-]
 
 // Sections that have a per-item sub-list. On mobile we expose this list inside
 // the sidebar instead of within the section's own column.
-const SUB_NAV_SECTIONS = new Set<Section>(['projects', 'changelog'])
+const SUB_NAV_SECTIONS = new Set<SectionId>(['projects', 'changelog'])
+
+// A plain left-click is intercepted so the shell can run the avatar fly-out
+// before routing. Modified clicks (cmd/ctrl/shift/alt, middle button) are left
+// alone so "open in new tab" works — which matters now that every section is a
+// real URL, and is also why these are <Link>s and not <button>s: crawlers need
+// a real <a href> to follow.
+function isPlainLeftClick(e: React.MouseEvent) {
+  return !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0)
+}
 
 export default function Sidebar({
   active,
-  onSelect,
+  onNavigate,
   isOpen = false,
   onClose,
   mobileSubMenu = null,
@@ -77,19 +74,24 @@ export default function Sidebar({
   // pre-pointed at that item via the section's existing localStorage key.
   const showSubMenu = isMobile && mobileSubMenu !== null
 
-  const handleMainSelect = (id: Section) => {
+  const handleNavClick = (e: React.MouseEvent, id: SectionId) => {
+    if (!isPlainLeftClick(e)) return
     if (isMobile && SUB_NAV_SECTIONS.has(id)) {
+      e.preventDefault()
       onMobileSubMenuChange?.(id)
       return
     }
-    onSelect(id)
+    e.preventDefault()
+    onNavigate(id)
     onClose?.()
   }
 
-  const handleSubSelect = (storageKey: string, value: string, parent: Section) => {
+  const handleSubSelect = (e: React.MouseEvent, storageKey: string, value: string, parent: SectionId) => {
+    if (!isPlainLeftClick(e)) return
+    e.preventDefault()
     try { localStorage.setItem(storageKey, value) } catch { /* ignore */ }
     onMobileSubMenuChange?.(null)
-    onSelect(parent)
+    onNavigate(parent)
     onClose?.()
   }
 
@@ -117,14 +119,21 @@ export default function Sidebar({
         />
       )}
       <aside style={asideStyle}>
-      {/* Logo */}
+      {/* Logo — also the link home, so every page carries a crawlable path back
+          to the root. */}
       <div style={{ padding: '0 20px 28px', borderBottom: '0.5px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', fontWeight: 600, color: '#E9E9EF', letterSpacing: '-0.02em' }}>
-          helia.dev
-        </div>
-        <div style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '3px', letterSpacing: '0.06em' }}>
-          v10.4.2
-        </div>
+        <Link
+          href="/"
+          onClick={e => handleNavClick(e, 'me')}
+          style={{ textDecoration: 'none', display: 'block' }}
+        >
+          <div style={{ fontFamily: 'var(--font-sans)', fontSize: '15px', fontWeight: 600, color: '#E9E9EF', letterSpacing: '-0.02em' }}>
+            helia.dev
+          </div>
+          <div style={{ fontSize: '14px', color: 'var(--text-muted)', marginTop: '3px', letterSpacing: '0.06em' }}>
+            v10.4.2
+          </div>
+        </Link>
       </div>
 
       {showSubMenu ? (
@@ -157,11 +166,12 @@ export default function Sidebar({
 
           {subItems.map((item, i) => {
             const storageKey = mobileSubMenu === 'projects' ? 'projects-selected' : 'changelog-selected'
-            const parent = mobileSubMenu as Section
+            const parent = mobileSubMenu as SectionId
             return (
-              <button
+              <Link
                 key={item.key}
-                onClick={() => handleSubSelect(storageKey, item.key, parent)}
+                href={SECTION_BY_ID[parent].href}
+                onClick={e => handleSubSelect(e, storageKey, item.key, parent)}
                 style={{
                   display: 'block',
                   width: '100%',
@@ -171,6 +181,7 @@ export default function Sidebar({
                   border: 'none',
                   borderLeft: '2px solid transparent',
                   cursor: 'pointer',
+                  textDecoration: 'none',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
@@ -192,7 +203,7 @@ export default function Sidebar({
                 <div style={{ fontSize: '11px', color: 'var(--text-secondary)', paddingLeft: '30px', fontFamily: 'var(--font-mono)' }}>
                   {item.meta}
                 </div>
-              </button>
+              </Link>
             )
           })}
         </>
@@ -204,10 +215,13 @@ export default function Sidebar({
           </div>
 
           {/* Nav items */}
-          {endpoints.map(({ method, route, id }) => (
-            <button
+          {SECTIONS.map(({ method, label, id, href, title }) => (
+            <Link
               key={id}
-              onClick={() => handleMainSelect(id)}
+              href={href}
+              title={title}
+              aria-current={active === id ? 'page' : undefined}
+              onClick={e => handleNavClick(e, id)}
               style={{
                 position: 'relative',
                 display: 'flex',
@@ -219,13 +233,14 @@ export default function Sidebar({
                 cursor: 'pointer',
                 width: '100%',
                 textAlign: 'left',
+                textDecoration: 'none',
                 transition: 'background-color 0.2s cubic-bezier(0.16,1,0.3,1)',
               }}
               onMouseEnter={e => {
-                if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.03)'
+                if (active !== id) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)'
               }}
               onMouseLeave={e => {
-                if (active !== id) (e.currentTarget as HTMLButtonElement).style.background = 'transparent'
+                if (active !== id) (e.currentTarget as HTMLElement).style.background = 'transparent'
               }}
             >
               {active === id && (
@@ -262,12 +277,12 @@ export default function Sidebar({
                 fontFamily: 'var(--font-mono)',
                 transition: 'color 0.15s',
               }}>
-                {route}
+                {label}
               </span>
               {isMobile && SUB_NAV_SECTIONS.has(id) && (
                 <span aria-hidden="true" style={{ marginLeft: 'auto', color: 'var(--text-muted)', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>›</span>
               )}
-            </button>
+            </Link>
           ))}
 
           {/* System info */}

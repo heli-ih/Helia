@@ -117,7 +117,7 @@ export default function AvatarPanel({ active }: AvatarPanelProps) {
           <img
             key={src}
             src={src}
-            alt="Helia"
+            alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
             style={{
               height: hovered ? '102%' : active === 'collab' ? '92%' : '80%',
               width: 'auto',

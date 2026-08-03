@@ -1,18 +1,8 @@
 'use client'
 import { useBreakpoint } from '@/hooks/useBreakpoint'
 
-const stackData: Record<string, string[]> = {
-  frontend:   ['React', 'NextJS', 'React Native', 'SvelteKit', 'TypeScript', 'TailwindCSS', 'Bootstrap', 'React Three Fiber', 'ThreeJS'],
-  backend:    ['PHP', 'Laravel 11', 'Python', 'FastAPI', 'Node.js'],
-  data:       ['MySQL', 'PostgreSQL', 'Prisma', 'Supabase', 'Power BI'],
-  infra:      ['Railway', 'Firebase', 'GitHub Actions', 'Vercel', 'Github'],
-  automation: ['n8n', 'MS Power Automate', 'Selenium', 'UiPath'],
-  design:     ['Figma', 'Canva'],
-  tools:      ['MS365', 'Slack', 'Trello', 'Jira', 'Confluence'],
-  'soft skills': ['Analytical Thinking', 'Project Management', 'Teamwork', 'Problem-solving', 'Adaptability', 'Agile Methodologies', 'Leadership', 'Detail-oriented', 'Self-learner'],
-}
+import { stackData, stackEntries } from '@/data/stack'
 
-const stackEntries = Object.entries(stackData)
 
 const lineStyle = (i: number): React.CSSProperties => ({
   opacity: 0,
