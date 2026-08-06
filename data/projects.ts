@@ -8,7 +8,8 @@ export type Project = {
   status: string
   stack: string[]
   desc: string
-  image: string
+  /** null when there is no screenshot yet — the card falls back to a placeholder. */
+  image: string | null
   live: string | null
   github: string | null
 }
@@ -24,6 +25,17 @@ export const projects: Project[] = [
     image: 'https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/SkillSage.png?alt=media&token=b649fd63-c4c5-40a8-b68d-c2defe8fc91a',
     live: null,
     github: 'https://github.com/heli-ih',
+  },
+  {
+    id: 'linkedin-automation',
+    name: 'LinkedIn Content Automation Pipeline',
+    type: 'content automation pipeline',
+    status: 'live',
+    stack: ['Node.js', 'Claude API', 'Telegram Bot API', 'LinkedIn API', 'Supabase', 'PostgreSQL', 'Prisma', 'Railway'],
+    desc: 'Built an autonomous LinkedIn posting pipeline: Claude API drafts posts, a Telegram approval bot routes them for human sign-off, and approved posts publish automatically via the official LinkedIn API. Node.js with Supabase PostgreSQL and Prisma ORM managing scheduling and post state, deployed on Railway.',
+    image: '/linkedin-automation.png',
+    live: null,
+    github: null,
   },
   {
     id: 'fahad-riaz',

@@ -11,11 +11,20 @@ export type Entry = {
 
 export const entries: Entry[] = [
   {
-    v: 'v2.4',
-    date: 'Nov 2025 – Present',
-    title: 'Developer & Analyst @ Milele',
-    note: 'Developed an internal product tasting and evaluation portal using PHP and MySQL, replacing manual spreadsheets with a centralized web-based system for structured data collection, scoring, and analysis across food SKUs. Digitized data workflows, improving accuracy, traceability, and cross-functional collaboration between Product, Marketing, and Operations.\n\nConducted market and competitor research using public datasets and industry reports to identify product gaps and emerging opportunities; analyzed large datasets and delivered Power BI dashboards to support product planning, benchmarking, and strategic decision-making.\n\nDeveloped automated trading system using Python to monitor 100+ cryptocurrency pairs in real-time, detecting profitable trading opportunities, achieving <1-second latency. Integrated Binance API and built analysis engine using technical indicators (RSI, EMA, SMA) to identify high-probability trades.\n\nImplemented instant mobile notifications via Telegram bot and automated backtesting framework analyzing 30-day performance with win-rate calculations. Processed 2,880+ data points per asset daily, generating comprehensive reports with risk-reward analysis using pandas/NumPy.',
+    v: 'v3.0',
+    date: 'Jan 2026 – Present',
+    title: 'Technical Lead @ Milele Prime',
+    note: 'Own the end-to-end technology stack for a regulated multi-asset CFD brokerage (Saint Lucia FSA licensed) offering 1,200+ instruments across 5 asset classes — MetaTrader 5 (MT5) platform, liquidity bridge, CRM, integrations, and website — serving as the single point of accountability for infrastructure go-live.\n\nDeployed high-availability MT5 server infrastructure across 3 regions on Equinix (London primary, Amsterdam hot standby, Singapore access server) and configured the Centroid CS360 liquidity bridge, building a 999-symbol bridge engine configuration from LP specifications and market conventions.\n\nEngineered an AI trading MCP server in TypeScript, Node.js, and Express with Supabase PostgreSQL on Railway, 12 tools with revocable token authentication, per-call audit logging, and cross-account isolation, with 59 passing tests and 6 read tools verified live against the production MT5 server.\n\nLed CRM vendor evaluation across 3 platforms with k6 load testing, delivered the Brokeret CRM configuration (KYC flows, wallets, deposits, IB portal), owned CRM-to-MT5 integration UAT, and authored 3 versioned REST API specifications covering identity, KYC, and account data contracts.\n\nDesigned and developed mileleprime.com end to end (PHP, TailwindCSS, GitHub Pages) and built the pre-launch email infrastructure (self-hosted listmonk, Amazon SES, DKIM/DMARC), growing a waitlist to 58,000+ subscribers across 62 countries at up to 60,000 sends per day.',
     tag: 'current',
+  },
+  {
+    v: 'v2.4',
+    date: 'Nov 2025 – Jan 2026',
+    title: 'Developer & Analyst @ Milele',
+    // Ended Jan 2026 when the Milele Prime Technical Lead role started, so this
+    // is no longer the `current` entry.
+    note: 'Developed an internal product tasting and evaluation portal using PHP and MySQL, replacing manual spreadsheets with a centralized web-based system for structured data collection, scoring, and analysis across food SKUs. Digitized data workflows, improving accuracy, traceability, and cross-functional collaboration between Product, Marketing, and Operations.\n\nConducted market and competitor research using public datasets and industry reports to identify product gaps and emerging opportunities; analyzed large datasets and delivered Power BI dashboards to support product planning, benchmarking, and strategic decision-making.\n\nDeveloped automated trading system using Python to monitor 100+ cryptocurrency pairs in real-time, detecting profitable trading opportunities, achieving <1-second latency. Integrated Binance API and built analysis engine using technical indicators (RSI, EMA, SMA) to identify high-probability trades.\n\nImplemented instant mobile notifications via Telegram bot and automated backtesting framework analyzing 30-day performance with win-rate calculations. Processed 2,880+ data points per asset daily, generating comprehensive reports with risk-reward analysis using pandas/NumPy.',
+    tag: 'milestone',
   },
   {
     v: 'v2.2',

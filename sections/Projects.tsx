@@ -39,11 +39,14 @@ const GitHubMarkSmall = () => (
 
 const isInProgress = (status: string) => /in[- ]?progress/i.test(status)
 
-function ProjectImage({ src, alt }: { src: string; alt: string }) {
+function ProjectImage({ src, alt }: { src: string | null; alt: string }) {
   const [loaded, setLoaded] = useState(false)
+  // No screenshot for this project yet — show the placeholder alone rather than
+  // an <img src="">, which the browser resolves against the page URL and refetches.
+  const hasImage = Boolean(src)
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-      {!loaded && (
+      {(!loaded || !hasImage) && (
         <div style={{
           position: 'absolute',
           inset: 0,
@@ -66,8 +69,9 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
           </div>
         </div>
       )}
+      {hasImage && (
       <img
-        src={src}
+        src={src as string}
         alt={alt}
         loading="lazy"
         decoding="async"
@@ -81,6 +85,7 @@ function ProjectImage({ src, alt }: { src: string; alt: string }) {
           transition: 'opacity 0.25s ease',
         }}
       />
+      )}
     </div>
   )
 }

@@ -77,7 +77,7 @@ export const SECTIONS: SectionMeta[] = [
     heading: 'Experience',
     title: 'Experience — Helia Haghighi, Developer in Dubai',
     description:
-      'Roles at Milele, Peekabox, AccentEMC and AccuMed across Dubai — software development, technical business analysis, UI/UX leadership, and process automation.',
+      'Technical Lead at Milele Prime, plus roles at Milele, Peekabox, AccentEMC and AccuMed in Dubai — trading infrastructure, full-stack development, business analysis.',
     priority: 0.8,
   },
   {

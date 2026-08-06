@@ -16,12 +16,16 @@ function dateBounds(date: string): { start: string; end: string } {
   return { start: parts[0].trim(), end: (parts[1] ?? parts[0]).trim() }
 }
 
-// Splits a multi-sentence note into bullet items. Uses "period + space + capital"
+// Splits a multi-sentence note into bullet items. Blank lines are hard breaks
+// between points; within a paragraph it splits on "period + space + capital"
 // so abbreviations like "U.S." or "Inc." don't trigger false splits.
 function toBullets(text: string): string[] {
-  const parts = text.split(/\. (?=[A-Z])/)
-  return parts
-    .map((p, i) => (i < parts.length - 1 ? p + '.' : p))
+  return text
+    .split(/\n\s*\n/)
+    .flatMap(para => {
+      const parts = para.split(/\. (?=[A-Z])/)
+      return parts.map((p, i) => (i < parts.length - 1 ? p + '.' : p))
+    })
     .map(p => p.trim())
     .filter(Boolean)
 }
