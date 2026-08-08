@@ -56,7 +56,7 @@ function SectionBody({ id }: { id: SectionId }) {
           <ul>
             {SERVICES.map(s => (
               <li key={s.name}>
-                <strong>{s.name}</strong> — {s.description}
+                <strong>{s.name}</strong>: {s.description}
               </li>
             ))}
           </ul>
@@ -112,7 +112,7 @@ function SectionBody({ id }: { id: SectionId }) {
           {projects.map(p => (
             <article key={p.id}>
               <h2>
-                {p.name} — {p.type}
+                {p.name}: {p.type}
               </h2>
               <p>{p.desc}</p>
               <p>Built with: {p.stack.join(', ')}</p>
@@ -146,7 +146,7 @@ function SectionBody({ id }: { id: SectionId }) {
               {a.link && (
                 <p>
                   <a href={a.link} rel="noopener">
-                    {a.title} — announcement
+                    {a.title}: announcement
                   </a>
                 </p>
               )}
@@ -160,7 +160,7 @@ function SectionBody({ id }: { id: SectionId }) {
         <ul>
           {certifications.map(c => (
             <li key={c.title + c.year}>
-              {c.title} ({c.year}){c.note ? ` — ${c.note}` : ''}
+              {c.title} ({c.year}){c.note ? `: ${c.note}` : ''}
             </li>
           ))}
         </ul>
@@ -172,7 +172,7 @@ function SectionBody({ id }: { id: SectionId }) {
           {testimonials.map(t => (
             <article key={t.id}>
               <h2>
-                {t.name} — {t.role}
+                {t.name}: {t.role}
               </h2>
               <p>{t.relationship}</p>
               <p>{t.date}</p>
@@ -188,14 +188,14 @@ function SectionBody({ id }: { id: SectionId }) {
       return (
         <>
           <p>
-            Whether it&apos;s a project, a role, or just a question — send it through. I read
+            Whether it&apos;s a project, a role, or just a question, send it through. I read
             every message.
           </p>
           <h2>Services</h2>
           <ul>
             {SERVICES.map(s => (
               <li key={s.name}>
-                <strong>{s.name}</strong> — {s.description}
+                <strong>{s.name}</strong>: {s.description}
               </li>
             ))}
           </ul>
@@ -236,7 +236,7 @@ export default function SeoContent({ section }: { section: SectionId }) {
           {SECTIONS.filter(s => s.id !== section).map(s => (
             <li key={s.id}>
               <a href={s.href}>
-                {s.heading} — {s.description}
+                {s.heading}: {s.description}
               </a>
             </li>
           ))}
@@ -244,7 +244,7 @@ export default function SeoContent({ section }: { section: SectionId }) {
       </nav>
 
       <p>
-        {NAME} — {ROLE}, {LOCATION}.
+        {NAME}, {ROLE}, {LOCATION}.
       </p>
     </div>
   )

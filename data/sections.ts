@@ -41,10 +41,10 @@ export const SECTIONS: SectionMeta[] = [
     href: '/',
     label: '/me',
     method: 'GET',
-    heading: 'Helia Haghighi — Software Developer & Data Analyst',
-    title: 'Helia Haghighi — Software & Web Developer in Dubai, UAE',
+    heading: 'Helia Haghighi, Software Developer & Data Analyst',
+    title: 'Helia Haghighi, Software & Web Developer in Dubai, UAE',
     description:
-      'Software developer and data analyst in Dubai, UAE. I design and build websites, web applications, and mobile apps — Next.js, React, Laravel, React Native.',
+      'Software developer and data analyst in Dubai, UAE. I design and build websites, web applications, and mobile apps using Next.js, React, Laravel, and React Native.',
     priority: 1,
   },
   {
@@ -53,7 +53,7 @@ export const SECTIONS: SectionMeta[] = [
     label: '/me/origin',
     method: 'GET',
     heading: 'About Helia Haghighi',
-    title: 'About Helia Haghighi — Developer & CS Grad in Dubai',
+    title: 'About Helia Haghighi | Developer & CS Grad in Dubai',
     description:
       'Computer Science graduate of Canadian University Dubai (3.95 GPA), now building full-stack products, data pipelines, and systems from Dubai, UAE.',
     priority: 0.8,
@@ -75,9 +75,9 @@ export const SECTIONS: SectionMeta[] = [
     label: '/experience',
     method: 'GET',
     heading: 'Experience',
-    title: 'Experience — Helia Haghighi, Developer in Dubai',
+    title: 'Experience | Helia Haghighi, Developer in Dubai',
     description:
-      'Technical Lead at Milele Prime, plus roles at Milele, Peekabox, AccentEMC and AccuMed in Dubai — trading infrastructure, full-stack development, business analysis.',
+      'Technical Lead at Milele Prime, plus roles at Milele, Peekabox, AccentEMC and AccuMed in Dubai. Trading infrastructure, full-stack development, business analysis.',
     priority: 0.8,
   },
   {
@@ -86,7 +86,7 @@ export const SECTIONS: SectionMeta[] = [
     label: '/projects',
     method: 'GET',
     heading: 'Projects',
-    title: 'Projects — Websites & Apps by Helia Haghighi, Dubai',
+    title: 'Projects | Websites & Apps by Helia Haghighi, Dubai',
     description:
       'Client websites, enterprise platforms, and mobile apps: SkillSage, fahadriaz.com, nicolaslunacoaching.com, Food Guardian, CUD Navigator and more.',
     priority: 0.9,
@@ -97,7 +97,7 @@ export const SECTIONS: SectionMeta[] = [
     label: '/achievements',
     method: 'GET',
     heading: 'Achievements & Awards',
-    title: 'Awards & Achievements — Helia Haghighi',
+    title: 'Awards & Achievements | Helia Haghighi',
     description:
       'Award-winning software and research: IEEE Best Software Engineering Project, Best Poster at Zayed University, Best Research and Best Software at CUD.',
     priority: 0.6,
@@ -108,9 +108,9 @@ export const SECTIONS: SectionMeta[] = [
     label: '/certifications',
     method: 'GET',
     heading: 'Certifications',
-    title: 'Certifications — Helia Haghighi, Dubai Developer',
+    title: 'Certifications | Helia Haghighi, Dubai Developer',
     description:
-      'Professional certifications in business analysis, JavaScript, SQL, generative AI, cloud, and web design — from IBM, Meta, Google Cloud and others.',
+      'Professional certifications in business analysis, JavaScript, SQL, generative AI, cloud, and web design, from IBM, Meta, Google Cloud and others.',
     priority: 0.6,
   },
   {
@@ -119,7 +119,7 @@ export const SECTIONS: SectionMeta[] = [
     label: '/testimonials',
     method: 'GET',
     heading: 'Testimonials',
-    title: 'Testimonials — Helia Haghighi, Developer in Dubai',
+    title: 'Testimonials | Helia Haghighi, Developer in Dubai',
     description:
       'Recommendations from managers, founders, mentors and teammates at Milele, Peekabox and Canadian University Dubai.',
     priority: 0.6,
@@ -130,7 +130,7 @@ export const SECTIONS: SectionMeta[] = [
     label: '/collab',
     method: 'POST',
     heading: 'Work with Helia Haghighi',
-    title: 'Hire a Web Developer in Dubai — Helia Haghighi',
+    title: 'Hire a Web Developer in Dubai | Helia Haghighi',
     description:
       'Available for website design and development, web applications, mobile apps, dashboards, and automation work in Dubai and across the UAE. Get in touch.',
     priority: 0.9,

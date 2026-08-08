@@ -30,13 +30,13 @@ export const awards: Award[] = [
   {
     v: 'a3',
     date: 'April 2024',
-    title: 'CUD Engineering Project Showcase Competition — Best Research',
+    title: 'CUD Engineering Project Showcase Competition: Best Research',
     note: 'A winner of the "The Best Research" category for the research and project titled "A Dynamic Priority Queue for Food Pickup Scheduling"',
   },
   {
     v: 'a4',
     date: 'April 2024',
-    title: 'CUD Engineering Project Showcase Competition — Best Software',
+    title: 'CUD Engineering Project Showcase Competition: Best Software',
     note: 'A winner of the "The Best Software" category for the project titled "CUD Navigator"',
   },
 ]

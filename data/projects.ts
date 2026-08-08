@@ -87,7 +87,7 @@ export const projects: Project[] = [
     type: 'event organizing platform',
     status: 'live',
     stack: ['Svelte', 'TypeScript', 'SQLite', 'Prisma'],
-    desc: 'Centralised hub for organising, browsing, and registering for events within a university environment — hosted by clubs, societies and workshop organisers.',
+    desc: 'Centralised hub for organising, browsing, and registering for events within a university environment, hosted by clubs, societies and workshop organisers.',
     image: 'https://firebasestorage.googleapis.com/v0/b/personal-website-b36c3.appspot.com/o/CUD-Event-Management.png?alt=media&token=30d60421-22b3-416c-ba96-540d0dca2153',
     live: null,
     github: 'https://github.com/heli-ih/CUD-Event-Management',

@@ -61,7 +61,7 @@ function pageJsonLd(id: SectionId) {
           '@type': 'CreativeWork',
           '@id': `${url}#project-${p.id}`,
           name: p.name,
-          headline: `${p.name} — ${p.type}`,
+          headline: `${p.name}: ${p.type}`,
           description: p.desc,
           creator: { '@id': PERSON_ID },
           keywords: p.stack.join(', '),

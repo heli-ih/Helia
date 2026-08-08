@@ -25,7 +25,7 @@ export default function SectionTestimonials() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
-        200 OK — GET /testimonials
+        200 OK: GET /testimonials
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',

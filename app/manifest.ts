@@ -5,7 +5,7 @@ import { NAME, TAGLINE } from '@/data/profile'
 // `manifest` field in app/layout.tsx metadata.
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: `${NAME} — Software & Web Developer in Dubai, UAE`,
+    name: `${NAME}, Software & Web Developer in Dubai, UAE`,
     short_name: NAME,
     description: TAGLINE,
     start_url: '/',

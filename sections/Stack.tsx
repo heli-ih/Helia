@@ -15,7 +15,7 @@ export default function SectionStack() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px', ...lineStyle(0) }}>
-        200 OK — GET /stack
+        200 OK: GET /stack
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',

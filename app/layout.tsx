@@ -7,9 +7,9 @@ import {
 import { knowsAbout } from "@/data/stack";
 import { awards } from "@/data/awards";
 
-const TITLE = "Helia Haghighi — Software & Web Developer in Dubai, UAE";
+const TITLE = "Helia Haghighi, Software & Web Developer in Dubai, UAE";
 const DESCRIPTION =
-  "Software developer and data analyst in Dubai, UAE. I design and build websites, web applications, and mobile apps — Next.js, React, Laravel, React Native.";
+  "Software developer and data analyst in Dubai, UAE. I design and build websites, web applications, and mobile apps using Next.js, React, Laravel, and React Native.";
 
 // 1200x630 is the size LinkedIn / X / Facebook expect for a large card. The
 // dimensions declared below must match the real file: public/og.jpg.
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: `${NAME} — ${ROLE}, Dubai, UAE`,
+        alt: `${NAME}, ${ROLE}, Dubai, UAE`,
       },
     ],
   },

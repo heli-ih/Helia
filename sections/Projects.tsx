@@ -200,7 +200,7 @@ export default function SectionProjects() {
         ) : (
           <div key={project.id} className="section-enter">
             <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px', ...lineStyle(0) }}>
-              200 OK — GET /projects/{project.id}
+              200 OK: GET /projects/{project.id}
             </div>
             <h3 style={{
               fontFamily: 'var(--font-sans)',
@@ -220,7 +220,7 @@ export default function SectionProjects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${project.name} on GitHub`}
-                  title={`${project.name} — GitHub`}
+                  title={`${project.name} on GitHub`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -245,7 +245,7 @@ export default function SectionProjects() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${project.name} live site`}
-                  title={`${project.name} — Live site`}
+                  title={`${project.name} live site`}
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',

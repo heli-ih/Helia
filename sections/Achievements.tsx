@@ -84,7 +84,7 @@ export default function SectionAchievements() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
-        200 OK — GET /achievements
+        200 OK: GET /achievements
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
@@ -120,7 +120,7 @@ export default function SectionAchievements() {
                 el.style.transform = 'translateY(0)'
               }}
             >
-              {a.image && <AchievementImage src={a.image} alt={`${a.title} — awarded to Helia Haghighi, ${a.date}`} />}
+              {a.image && <AchievementImage src={a.image} alt={`${a.title}, awarded to Helia Haghighi, ${a.date}`} />}
 
               {/* Content */}
               <div style={{ flex: 1, minWidth: 0 }}>

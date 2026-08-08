@@ -191,7 +191,7 @@ export default function SectionChangelog() {
         ) : (
           <div key={group.key} className="section-enter">
             <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px', ...lineStyle(0) }}>
-              200 OK — GET /experience/{slugify(group.label)}
+              200 OK: GET /experience/{slugify(group.label)}
             </div>
 
             {/* Company title — same typography as the project H3 in /projects.

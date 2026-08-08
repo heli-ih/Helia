@@ -28,7 +28,7 @@ export function sectionMetadata(id: SectionId): Metadata {
           url: '/og.jpg',
           width: 1200,
           height: 630,
-          alt: `${NAME} — ${ROLE}, Dubai, UAE`,
+          alt: `${NAME}, ${ROLE}, Dubai, UAE`,
         },
       ],
     },

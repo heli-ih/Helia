@@ -229,7 +229,7 @@ export default function SectionCertifications() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px' }}>
-        200 OK — GET /certifications
+        200 OK: GET /certifications
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
@@ -275,7 +275,7 @@ export default function SectionCertifications() {
               el.style.transform = 'translateY(0)'
             }}
           >
-            <CertTileVisual image={c.image} alt={`${c.title} — certificate awarded to Helia Haghighi, ${c.year}`} fullSize={isMobile || isTablet} pdfAspect={pdfAspect ?? undefined} />
+            <CertTileVisual image={c.image} alt={`${c.title}, certificate awarded to Helia Haghighi, ${c.year}`} fullSize={isMobile || isTablet} pdfAspect={pdfAspect ?? undefined} />
 
             {/* Bottom info */}
             <div style={{

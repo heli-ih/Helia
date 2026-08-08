@@ -14,7 +14,7 @@ export const entries: Entry[] = [
     v: 'v3.0',
     date: 'Jan 2026 – Present',
     title: 'Technical Lead @ Milele Prime',
-    note: 'Own the end-to-end technology stack for a regulated multi-asset CFD brokerage (Saint Lucia FSA licensed) offering 1,200+ instruments across 5 asset classes — MetaTrader 5 (MT5) platform, liquidity bridge, CRM, integrations, and website — serving as the single point of accountability for infrastructure go-live.\n\nDeployed high-availability MT5 server infrastructure across 3 regions on Equinix (London primary, Amsterdam hot standby, Singapore access server) and configured the Centroid CS360 liquidity bridge, building a 999-symbol bridge engine configuration from LP specifications and market conventions.\n\nEngineered an AI trading MCP server in TypeScript, Node.js, and Express with Supabase PostgreSQL on Railway, 12 tools with revocable token authentication, per-call audit logging, and cross-account isolation, with 59 passing tests and 6 read tools verified live against the production MT5 server.\n\nLed CRM vendor evaluation across 3 platforms with k6 load testing, delivered the Brokeret CRM configuration (KYC flows, wallets, deposits, IB portal), owned CRM-to-MT5 integration UAT, and authored 3 versioned REST API specifications covering identity, KYC, and account data contracts.\n\nDesigned and developed mileleprime.com end to end (PHP, TailwindCSS, GitHub Pages) and built the pre-launch email infrastructure (self-hosted listmonk, Amazon SES, DKIM/DMARC), growing a waitlist to 58,000+ subscribers across 62 countries at up to 60,000 sends per day.',
+    note: 'Own the end-to-end technology stack for a regulated multi-asset CFD brokerage, MetaTrader platform, liquidity bridge, CRM integrations, hosting and website.\n\nEngineered an AI trading MCP server in TypeScript, Node.js and Express with Supabase PostgreSQL on Railway, 12 tools with revocable token authentication, per-call audit logging and cross-account isolation with 6 read tools verified live against the production MT5 server.\n\nDesigned and developed mileleprime.com end to end (PHP, TailwindCSS, Supabase, GitHub Pages) and built the pre-launch waitlist along with an email marketing infrastructure (self-hosted listmonk, Amazon SES, Mailgun) growing the waitlist to 70,000+ subscribers across 62 countries at up to 50,000 sends per day.',
     tag: 'current',
   },
   {
@@ -57,14 +57,14 @@ export const entries: Entry[] = [
   {
     v: 'v1.6',
     date: 'Apr 2024',
-    title: 'Best Poster — Zayed University Research Conference',
+    title: 'Best Poster: Zayed University Research Conference',
     note: 'Won Best Poster Presentation for "A Dynamic Priority Queue for Food Pickup Scheduling" at Zayed University 15th Annual Undergraduate Research Conference on Applied Computing.',
     tag: 'award',
   },
   {
     v: 'v1.55',
     date: 'Apr 2024',
-    title: 'Best Research + Best Software — CUD Engineering Day',
+    title: 'Best Research + Best Software: CUD Engineering Day',
     note: 'Won Best Research for the Dynamic Priority Queue project and Best Software for CUD Navigator at the CUD Engineering Project Showcase Competition.',
     tag: 'award',
   },
@@ -85,14 +85,14 @@ export const entries: Entry[] = [
   {
     v: 'v1.0',
     date: 'Apr 2023',
-    title: 'CUD Engineering Day — Best Project Showcase',
+    title: 'CUD Engineering Day: Best Project Showcase',
     note: 'Won Project Showcase and Posters Competition for CUD Navigator.',
     tag: 'award',
   },
   {
     v: 'v0.5',
     date: 'May 2023',
-    title: 'Meta — Programming with JavaScript',
+    title: 'Meta: Programming with JavaScript',
     note: 'Completed Meta Programming with JavaScript certification.',
     tag: 'certification',
   },

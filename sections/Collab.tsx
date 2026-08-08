@@ -41,7 +41,7 @@ export default function SectionCollab() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--purple)', letterSpacing: '0.1em', marginBottom: '20px' }}>
-        202 Accepted — POST /collab
+        202 Accepted: POST /collab
       </div>
       <h2 style={{
         fontFamily: 'var(--font-sans)',
@@ -62,7 +62,7 @@ export default function SectionCollab() {
         maxWidth: isMobile ? '100%' : '480px',
         marginBottom: '24px',
       }}>
-        Whether it&apos;s a project, a role, or just a question — send it through.
+        Whether it&apos;s a project, a role, or just a question, send it through.
         I read every message.
       </p>
 

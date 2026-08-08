@@ -80,7 +80,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
               fontFamily: 'var(--font-mono)',
             }}
           >
-            200 OK — GET /me
+            200 OK: GET /me
           </div>
         </div>
 
@@ -227,7 +227,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
                 src="/avatar-default.jpg"
             fetchPriority="high"
             decoding="async"
-                alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
+                alt="Helia Haghighi, software developer and data analyst based in Dubai, UAE"
                 style={{
                   position: 'relative',
                   height: 'clamp(220px, 55vw, 380px)',
@@ -405,7 +405,7 @@ export default function SectionMe({ leaving = false }: MeProps) {
             src="/avatar-default.jpg"
             fetchPriority="high"
             decoding="async"
-            alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
+            alt="Helia Haghighi, software developer and data analyst based in Dubai, UAE"
             style={{
               position: 'relative',
               height: '480px',

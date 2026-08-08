@@ -6,7 +6,7 @@ import { SECTIONS } from '@/data/sections'
 // pointing at the site root, which invites Google to index the error page as a
 // duplicate of the homepage.
 export const metadata: Metadata = {
-  title: { absolute: '404 — Page not found | Helia Haghighi' },
+  title: { absolute: '404: Page not found | Helia Haghighi' },
   robots: { index: false, follow: true },
   alternates: { canonical: undefined },
 }

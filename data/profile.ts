@@ -11,7 +11,7 @@ export const ROLE = 'Software Developer · Data Analyst'
 export const LOCATION = 'Dubai, UAE'
 
 export const TAGLINE =
-  'Software Developer and Data Analyst based in Dubai, UAE — building websites, web applications, and mobile apps.'
+  'Software Developer and Data Analyst based in Dubai, UAE. I build websites, web applications, and mobile apps.'
 
 export const BIO =
   'I turn complex problems into systems that work. My expertise spans enterprise solutions, continuously delivering innovative products that drive business impact.'
@@ -43,7 +43,7 @@ export const SERVICES: { name: string; description: string }[] = [
   {
     name: 'Web Development',
     description:
-      'Custom websites and web applications built with Next.js, React, Laravel and PHP — from a single-page personal brand site to an enterprise platform, for clients in Dubai and across the UAE.',
+      'Custom websites and web applications built with Next.js, React, Laravel and PHP, from a single-page personal brand site to an enterprise platform, for clients in Dubai and across the UAE.',
   },
   {
     name: 'Website Design & UI/UX',
@@ -63,6 +63,6 @@ export const SERVICES: { name: string; description: string }[] = [
   {
     name: 'Process Automation',
     description:
-      'RPA and workflow automation with UiPath, Selenium, n8n, and Power Automate — replacing manual spreadsheet processes with reliable systems.',
+      'RPA and workflow automation with UiPath, Selenium, n8n, and Power Automate, replacing manual spreadsheet processes with reliable systems.',
   },
 ]

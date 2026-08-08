@@ -14,7 +14,7 @@ export default function SectionOrigin() {
   return (
     <div className="section-enter" style={{ padding: isMobile ? '20px' : '32px 36px', overflowY: 'auto', height: '100%' }}>
       <div style={{ fontSize: '14px', color: 'var(--green)', letterSpacing: '0.1em', marginBottom: '20px', ...lineStyle(0) }}>
-        200 OK — GET /me/origin
+        200 OK: GET /me/origin
       </div>
       {/* Mobile-only: top 20% of avatar peeking above the title */}
       {isMobile && (
@@ -29,7 +29,7 @@ export default function SectionOrigin() {
         }}>
           <img
             src="/avatar-default.jpg"
-            alt="Helia Haghighi — software developer and data analyst based in Dubai, UAE"
+            alt="Helia Haghighi, software developer and data analyst based in Dubai, UAE"
             style={{
               width: '100%',
               height: 'auto',
